@@ -1,0 +1,16 @@
+blackpink-fansite/
+│
+├── index.html          (Главная страница с дверью)
+├── style.css           (Стили)
+├── script.js           (JavaScript)
+├── about.html          (О группе)
+├── jisoo.html          (Страница Джису)
+├── jennie.html         (Страница Дженни)
+├── rose.html           (Страница Розэ)
+├── lisa.html           (Страница Лисы)
+├── vote.html           (Игровая страница)
+│
+└── assets/             (Папка с ресурсами)
+    ├── img/          (все картинки)
+    │
+    └── video

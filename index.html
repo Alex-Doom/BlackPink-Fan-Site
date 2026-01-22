@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLACKPINK World | Фан-сайт</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖤</text></svg>">
+</head>
+<body>
+    <!-- ЭКРАН С АНИМИРОВАННОЙ ДВЕРЬЮ -->
+    <div class="door-screen active" id="doorScreen">
+        <div class="door-container" id="doorContainer">
+            <!-- Левая створка двери -->
+            <div class="door door-left">
+                <div class="door-content">
+                    <div class="logo-text">
+                        <span class="black-text">BLACK</span>
+                        <div class="pink-glow"></div>
+                    </div>
+                    <div class="subtitle">ФАН-СООБЩЕСТВО</div>
+                </div>
+            </div>
+            
+            <!-- Правая створка двери -->
+            <div class="door door-right">
+                <div class="door-content">
+                    <div class="logo-text">
+                        <span class="pink-text">PINK</span>
+                        <div class="pink-glow"></div>
+                    </div>
+                    <div class="subtitle">ОТ ФАНАТОВ ДЛЯ ФАНАТОВ</div>
+                </div>
+            </div>
+            
+            <!-- Центральная ручка и инструкция -->
+            <div class="door-center">
+                <div class="door-handle" id="doorHandle">
+                    <div class="handle-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="handle-glow"></div>
+                    <div class="handle-text">
+                        <span>НАЖМИ, ЧТОБЫ ВОЙТИ</span>
+                        <div class="arrow-down">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="door-instruction">
+                    <p>Или нажмите <kbd>ПРОБЕЛ</kbd> для входа</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Предупреждение об авторских правах на экране двери -->
+        <div class="door-disclaimer">
+            <p><i class="fas fa-exclamation-circle"></i> Это неофициальный фан-сайт. Все права принадлежат YG Entertainment.</p>
+        </div>
+    </div>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ (скрыт до открытия двери) -->
+    <div class="main-content" id="mainContent">
+        <!-- Хедер с навигацией -->
+        <header class="site-header" id="siteHeader">
+            <div class="header-container">
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-black">BLACK</span>
+                        <span class="logo-pink">PINK</span>
+                        <span class="logo-sub">FAN VERSE</span>
+                    </a>
+                </div>
+                
+                <nav class="main-nav" id="mainNav">
+                    <ul>
+                        <li><a href="about.html"><i class="fas fa-users"></i> О ГРУППЕ</a></li>
+                        <li class="dropdown">
+                            <a href="#"><i class="fas fa-star"></i> УЧАСТНИЦЫ <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="jisoo.html" target="_blank"><span class="member-color" style="background-color: #ff4d6d;"></span> Джису</a></li>
+                                <li><a href="jennie.html" target="_blank"><span class="member-color" style="background-color: #ff0066;"></span> Дженни</a></li>
+                                <li><a href="rose.html" target="_blank"><span class="member-color" style="background-color: #ff66b2;"></span> Розэ</a></li>
+                                <li><a href="lisa.html" target="_blank"><span class="member-color" style="background-color: #ffcc00;"></span> Лиса</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="vote.html"><i class="fas fa-gamepad"></i> ВЫБОР ЛУЧШЕЙ</a></li>
+                        <li><a href="#footer"><i class="fas fa-heart"></i> ФАН-ЗОНА</a></li>
+                    </ul>
+                </nav>
+                
+                <button class="menu-toggle" id="menuToggle" aria-label="Меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Герой-баннер с приветствием -->
+        <section class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        ДОБРО ПОЖАЛОВАТЬ В <span class="highlight">BLACKPINK</span> ВЕРСИЮ
+                    </h1>
+                    <p class="hero-subtitle">
+                        Неофициальный фан-сайт, созданный с любовью к самой влиятельной K-pop женской группе мира
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="about.html" class="btn btn-primary">
+                            <i class="fas fa-play-circle"></i> Узнать о группе
+                        </a>
+                        <a href="vote.html" class="btn btn-secondary">
+                            <i class="fas fa-crown"></i> Выбрать лучшую
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Стилизованное изображение группы (векторное/силуэт) -->
+                <div class="hero-visual">
+                    <div class="group-silhouette">
+                        <div class="silhouette-member" style="--color: #ff4d6d;" data-name="Джису" data-img="jisoo">
+                            <div class="silhouette-shape">
+                                <!-- Изображение появится при наведении -->
+                                <img src="assets/img/jisoo-portrait.webp" alt="Джису" class="member-image">
+                            </div>
+                            <span class="member-name">JISOO</span>
+                        </div>
+                        <div class="silhouette-member" style="--color: #ff0066;" data-name="Дженни" data-img="jennie">
+                            <div class="silhouette-shape">
+                                <img src="assets/img/jennie-portrait.jpg" id="jennie-portrait" alt="Дженни" class="member-image">
+                            </div>
+                            <span class="member-name">JENNIE</span>
+                        </div>
+                        <div class="silhouette-member" style="--color: #ff66b2;" data-name="Розэ" data-img="rose">
+                            <div class="silhouette-shape">
+                                <img src="assets/img/rose-portrait.jpg" alt="Розэ" class="member-image">
+                            </div>
+                            <span class="member-name">ROSÉ</span>
+                        </div>
+                        <div class="silhouette-member" style="--color: #ffcc00;" data-name="Лиса" data-img="lisa">
+                            <div class="silhouette-shape">
+                                <img src="assets/img/lisa-portrait.jpg" alt="Лиса" class="member-image">
+                            </div>
+                            <span class="member-name">LISA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-scroll">
+                <a href="#about-preview" class="scroll-down">
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Краткий превью о группе -->
+        <section class="about-preview" id="about-preview">
+            <div class="container">
+                <div class="section-header">
+                    <h2>ВСЕМИРНОЕ ДОМИНИРОВАНИЕ <span class="pink-text">BLACKPINK</span></h2>
+                    <p>Феномен, изменивший K-pop индустрию</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <div class="stat-number">30+ млрд</div>
+                        <div class="stat-label">Просмотров на YouTube</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Студийных альбома</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <div class="stat-number">50+ стран</div>
+                        <div class="stat-label">Мировые туры</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="stat-number">400+</div>
+                        <div class="stat-label">Наград и номинаций</div>
+                    </div>
+                </div>
+                
+                <div class="preview-actions">
+                    <a href="about.html" class="btn btn-outline">
+                        <i class="fas fa-book-open"></i> Подробнее о группе
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Предпросмотр участниц -->
+        <section class="members-preview">
+            <div class="container">
+                <div class="section-header">
+                    <h2>ЧЕТЫРЕ <span class="pink-text">УНИКАЛЬНЫХ</span> АУРЫ</h2>
+                    <p>Каждая участница привносит что-то особенное</p>
+                </div>
+                
+                <div class="members-grid">
+                    <div class="member-card" data-member="jisoo">
+                        <div class="member-color-bar" style="background-color: #ff4d6d;"></div>
+                        <div class="member-info">
+                            <h3>ДЖИСУ</h3>
+                            <p class="member-position">Вокал, вижуал</p>
+                            <p class="member-desc">Элегантная и харизматичная, с чистым вокалом</p>
+                        </div>
+                        <a href="jisoo.html" class="member-link">
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="member-card" data-member="jennie">
+                        <div class="member-color-bar" style="background-color: #ff0066;"></div>
+                        <div class="member-info">
+                            <h3>ДЖЕННИ</h3>
+                            <p class="member-position">Рэп, вокал</p>
+                            <p class="member-desc">Уверенная и модная, с уникальным стилем</p>
+                        </div>
+                        <a href="jennie.html" class="member-link">
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="member-card" data-member="rose">
+                        <div class="member-color-bar" style="background-color: #ff66b2;"></div>
+                        <div class="member-info">
+                            <h3>РОЗЭ</h3>
+                            <p class="member-position">Главный вокал, танец</p>
+                            <p class="member-desc">Страстная и артистичная, с уникальным голосом</p>
+                        </div>
+                        <a href="rose.html" class="member-link">
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="member-card" data-member="lisa">
+                        <div class="member-color-bar" style="background-color: #ffcc00;"></div>
+                        <div class="member-info">
+                            <h3>ЛИСА</h3>
+                            <p class="member-position">Главный танцор, рэп, вокал</p>
+                            <p class="member-desc">Энергичная и техничная, с мощной хореографией</p>
+                        </div>
+                        <a href="lisa.html" class="member-link">
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Призыв к действию для игры -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>ГОТОВЫ ВЫБРАТЬ СВОЮ <span class="pink-text">БИАС</span>?</h2>
+                    <p>Пройдите наш тест и узнайте, какая участница BLACKPINK ближе всего вам по духу!</p>
+                    
+                    <div class="cta-btns">
+                        <a href="vote.html" class="btn btn-glow">
+                            <i class="fas fa-gamepad"></i> НАЧАТЬ ИГРУ
+                        </a>
+                        <a href="vote.html#vote-best" class="btn btn-secondary">
+                            <i class="fas fa-gamepad"></i> ПРОГОЛОСОВАТЬ
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Футер с важной юридической информацией -->
+        <footer class="site-footer" id="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <div class="footer-logo">
+                            <span class="logo-black">BLACK</span><span class="logo-pink">PINK</span>
+                            <span class="logo-sub">FAN VERSE</span>
+                        </div>
+                        <p class="footer-description">
+                            Неофициальный фан-сайт, созданный с любовью и уважением к группе BLACKPINK и их творчеству.
+                        </p>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Discord">
+                                <i class="fab fa-discord"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3>БЫСТРЫЕ ССЫЛКИ</h3>
+                        <ul class="footer-links">
+                            <li><a href="about.html">О группе</a></li>
+                            <li><a href="jisoo.html">Джису</a></li>
+                            <li><a href="jennie.html">Дженни</a></li>
+                            <li><a href="rose.html">Розэ</a></li>
+                            <li><a href="lisa.html">Лиса</a></li>
+                            <li><a href="vote.html">Выбор лучшей</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3>ФАН-РЕСУРСЫ</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Фан-арт галерея</a></li>
+                            <li><a href="#">Тексты песен</a></li>
+                            <li><a href="#">Хронология</a></li>
+                            <li><a href="#">Форум фанатов</a></li>
+                            <li><a href="#">События</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3>ПОДДЕРЖКА</h3>
+                        <ul class="footer-links">
+                            <li><a href="#footer">Обратная связь</a></li>
+                            <li><a href="#footer">Помощь</a></li>
+                            <li><a href="#footer">FAQ</a></li>
+                            <li><a href="#footer">Пожертвования</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- ВАЖНОЕ: ЮРИДИЧЕСКОЕ ПРЕДУПРЕЖДЕНИЕ -->
+                <div class="legal-disclaimer">
+                    <h4><i class="fas fa-exclamation-triangle"></i> ЮРИДИЧЕСКОЕ УВЕДОМЛЕНИЕ</h4>
+                    <p>
+                        Этот сайт является <strong>неофициальным фан-сайтом</strong>, созданным фанатами для фанатов. 
+                        Мы НЕ связаны с BLACKPINK, YG Entertainment или любыми их представителями.
+                    </p>
+                    <p>
+                        <strong>Все права на интеллектуальную собственность</strong> (имя "BLACKPINK", логотипы, 
+                        изображения, музыка, видео) принадлежат <strong>YG Entertainment</strong> и соответствующим 
+                        правообладателям. Этот сайт создан исключительно в образовательных и развлекательных целях 
+                        без намерения нарушения авторских прав.
+                    </p>
+                    <p>
+                        Если вы являетесь правообладателем и считаете, что какой-либо контент нарушает ваши права, 
+                        пожалуйста, свяжитесь с нами для немедленного удаления материала.
+                    </p>
+                    <div class="copyright">
+                        <p>&copy; 2023 BLACKPINK Fan Verse. Все права защищены. | Сделано с <i class="fas fa-heart" style="color: #ff0066;"></i> для BLINK</p>
+                        <p>Официальный сайт: <a href="https://www.ygfamily.com" target="_blank" rel="noopener">YG Entertainment</a></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Скрипты -->
+    <script src="script.js"></script>
+</body>
+</html>

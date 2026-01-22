@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Джису | BLACKPINK Fan Verse</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖤</text></svg>">
+
+    <style>
+        :root {
+            --member-color: #ff4d6d;
+            --member-rgb: 255, 77, 109;
+        }
+        
+        .member-hero {
+            background: linear-gradient(135deg, rgba(255,77,109,0.1) 0%, rgba(0,0,0,0.9) 70%);
+            padding-top: 120px;
+            padding-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .member-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255,77,109,0.2) 0%, transparent 70%);
+            z-index: 1;
+        }
+        
+        .member-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .member-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .member-silhouette {
+            width: 300px;
+            height: 500px;
+            background: linear-gradient(to bottom, var(--member-color), rgba(var(--member-rgb), 0.3));
+            border-radius: 150px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        
+        .member-silhouette::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+        }
+
+        .member-portrait {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .member-info h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            color: var(--member-color);
+            text-shadow: 0 0 20px rgba(var(--member-rgb), 0.5);
+        }
+        
+        .member-real-name {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1.5rem;
+        }
+        
+        .member-position {
+            display: inline-block;
+            background: rgba(var(--member-rgb), 0.2);
+            color: var(--member-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(var(--member-rgb), 0.5);
+        }
+        
+        .member-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.3rem;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .member-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+        }
+        
+        .facts-section {
+            background: rgba(255,255,255,0.03);
+            padding: 4rem 0;
+        }
+        
+        .fact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .fact-card {
+            background: rgba(var(--member-rgb), 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(var(--member-rgb), 0.1);
+            transition: var(--transition);
+        }
+        
+        .fact-card:hover {
+            border-color: var(--member-color);
+            transform: translateY(-5px);
+        }
+        
+        .fact-icon {
+            font-size: 2rem;
+            color: var(--member-color);
+            margin-bottom: 1rem;
+        }
+        
+        .fact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        
+        .fact-card p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        #img-auto {
+            height: auto;
+        }
+        
+        @media (max-width: 992px) {
+            .member-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .member-info h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .member-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Хедер -->
+    <header class="site-header" id="siteHeader">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-black">BLACK</span>
+                    <span class="logo-pink">PINK</span>
+                    <span class="logo-sub">FAN VERSE</span>
+                </a>
+            </div>
+            
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="about.html"><i class="fas fa-users"></i> О ГРУППЕ</a></li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-star"></i> УЧАСТНИЦЫ <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="jisoo.html"><span class="member-color" style="background-color: #ff4d6d;"></span> Джису</a></li>
+                            <li><a href="jennie.html"><span class="member-color" style="background-color: #ff0066;"></span> Дженни</a></li>
+                            <li><a href="rose.html"><span class="member-color" style="background-color: #ff66b2;"></span> Розэ</a></li>
+                            <li><a href="lisa.html"><span class="member-color" style="background-color: #ffcc00;"></span> Лиса</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="vote.html"><i class="fas fa-gamepad"></i> ВЫБОР ЛУЧШЕЙ</a></li>
+                    <li><a href="index.html#footer"><i class="fas fa-heart"></i> ФАН-ЗОНА</a></li>
+                </ul>
+            </nav>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Герой-секция участницы -->
+    <section class="member-hero">
+        <div class="container member-container">
+            <div class="member-visual">
+                <div class="member-silhouette" id="jisooSilhouette">
+                    <img src="assets/img/jisoo.jpg" alt="Джису" class="member-portrait">
+                </div>
+            </div>
+            
+            <div class="member-info">
+                <h1>ДЖИСУ</h1>
+                <div class="member-real-name">김지수 / Kim Jisoo</div>
+                <div class="member-position">Вокал • Вижуал • Макнэ</div>
+                
+                <div class="member-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">1995</span>
+                        <span class="stat-label">Год рождения</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">3 янв</span>
+                        <span class="stat-label">Дата рождения</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">Корея</span>
+                        <span class="stat-label">Национальность</span>
+                    </div>
+                </div>
+                
+                <div class="member-description">
+                    Ким Джису — самая старшая участница BLACKPINK, известная своим элегантным визуалом, 
+                    чистым вокалом и харизматичным присутствием на сцене. Она часто выступает в роли 
+                    "мамы" группы, заботясь о других участницах. Помимо музыкальной карьеры, Джису 
+                    успешно проявила себя как актриса в дораме "Snowdrop".
+                </div>
+                
+                <div class="hero-buttons">
+                    <a href="#facts" class="btn btn-primary" style="background: linear-gradient(135deg, var(--member-color), #ff4d6d);">
+                        <i class="fas fa-star"></i> Интересные факты
+                    </a>
+                    <a href="#talent" class="btn btn-primary" style="background: linear-gradient(135deg, var(--member-color), #ff4d6d);">
+                        <i class="fas fa-music"></i> Таланты
+                    </a>
+                    <a href="#dance" class="btn btn-primary" style="background: linear-gradient(135deg, var(--member-color), #ff4d6d);">
+                        <i class="fas fa-running"></i> Танец
+                    </a>
+                    <a href="#music" class="btn btn-secondary">
+                        <i class="fas fa-headphones" ></i> Сольные работы
+                    </a>
+                    <a href="#achievements" class="btn btn-secondary">
+                        <i class="fas fa-trophy"></i> Достижения
+                    </a>
+                    <a href="#gallery" class="btn btn-secondary">
+                        <i class="fas fa-images"></i> Галерея
+                    </a>
+                    <a href="vote.html" class="btn btn-secondary">
+                        <i class="fas fa-crown"></i> Выбор лучшей
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Интересные факты -->
+    <section class="facts-section" id="facts">
+        <div class="container">
+            <div class="section-header">
+                <h2>ИНТЕРЕСНЫЕ <span style="color: var(--member-color);">ФАКТЫ</span> О ДЖИСУ</h2>
+                <p>Узнайте больше о самой старшей участнице BLACKPINK</p>
+            </div>
+            
+            <div class="fact-grid">
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>Актерский дебют</h3>
+                    <p>Джису сыграла главную роль в дораме "Snowdrop" (2021-2022), что сделало ее первой участницей BLACKPINK, снявшейся в телесериале.</p>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Полиглот</h3>
+                    <p>Она свободно говорит на корейском и английском языках, а также изучала японский и базовый китайский для промоушена в разных странах.</p>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Художественный талант</h3>
+                    <p>Джису увлекается рисованием и каллиграфией. Она часто рисует для релаксации и даже создала некоторые рисунки для фан-мерча.</p>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Фан-культура</h3>
+                    <p>Ее фандом называется "Chichu" (от корейского "치츄"), а индивидуальный светящийся жезл — розовый с белым цветком.</p>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Сольный дебют</h3>
+                    <p>В 2023 году Джису выпустила сольный сингл "꽃 (FLOWER)", который побил несколько рекордов на музыкальных платформах.</p>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Позиция в группе</h3>
+                    <p>Джису официально является вокалисткой и "вижуалом" группы. Ее часто называют "человеческим Гуччи" за любовь к этому бренду.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Таланты -->
+    <section class="talent-section" id="talent">
+        <div class="container">
+            <div class="section-header">
+                <h2>ТАЛАНТЫ <span style="color: var(--member-color);">ДЖИСУ</span></h2>
+                <p>Уникальные способности и навыки</p>
+            </div>
+            
+            <div class="talent-grid">
+                <div class="talent-card">
+                    <div class="talent-icon">
+                        <i class="fas fa-microphone-alt"></i>
+                    </div>
+                    <h3>Чистый вокал</h3>
+                    <p>Джису обладает чистым, стабильным вокалом с приятным тембром, который идеально подходит для баллад и поп-песен.</p>
+                </div>
+                
+                <div class="talent-card">
+                    <div class="talent-icon">
+                        <i class="fas fa-dragon"></i>
+                    </div>
+                    <h3>Харизматичное присутствие</h3>
+                    <p>Ее сценическое присутствие отличается элегантностью и уверенностью, что делает ее визуальным центром группы.</p>
+                </div>
+                
+                <div class="talent-card">
+                    <div class="talent-icon">
+                        <i class="fas fa-theater-masks"></i>
+                    </div>
+                    <h3>Актерское мастерство</h3>
+                    <p>Природный актерский талант позволил ей успешно дебютировать в дораме "Snowdrop", получив признание критиков.</p>
+                </div>
+                
+                <div class="talent-card">
+                    <div class="talent-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Коммуникабельность</h3>
+                    <p>Джису известна своими отличными коммуникативными навыками, что делает ее идеальной для интервью и фанатских встреч.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Танцевальные навыки -->
+    <section class="dance-section" id="dance">
+        <div class="container">
+            <div class="section-header">
+                <h2>ТАНЦЕВАЛЬНЫЕ <span style="color: var(--member-color);">НАВЫКИ</span></h2>
+                <p>Элегантность и грация на сцене</p>
+            </div>
+            
+            <div class="dance-showcase">
+                <div class="dance-card">
+                    <div class="dance-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Элегантный стиль</h3>
+                    <p>Танцевальный стиль Джису отличается элегантностью, плавностью движений и особой грацией, характерной для вижуала группы.</p>
+                </div>
+                
+                <div class="dance-card">
+                    <div class="dance-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Эмоциональная подача</h3>
+                    <p>Каждое ее движение наполнено эмоциями, что создает особую связь со зрителями во время выступлений.</p>
+                </div>
+                
+                <div class="dance-card">
+                    <div class="dance-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Синхронность</h3>
+                    <p>Несмотря на то, что она не главный танцор, Джису всегда идеально синхронизирована с другими участницами.</p>
+                </div>
+                
+                <div class="dance-card">
+                    <div class="dance-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Постоянное улучшение</h3>
+                    <p>С каждым годом ее танцевальные навыки улучшаются, демонстрируя постоянную работу над собой.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сольные работы -->
+    <section class="music-section" id="music">
+        <div class="container">
+            <div class="section-header">
+                <h2>СОЛЬНЫЕ <span style="color: var(--member-color);">РАБОТЫ</span></h2>
+                <p>Индивидуальное творчество Джису</p>
+            </div>
+            
+            <div class="solo-album">
+                <div class="album-cover">
+                    <img src="assets/img/jisoo-solo.jpg" alt="ME - THE ALBUM">
+                </div>
+                <div class="album-info">
+                    <h3>ME (2023)</h3>
+                    <p>Дебютный сольный альбом Джису, выпущенный 31 марта 2023 года. Альбом установил несколько мировых рекордов и получил признание критиков.</p>
+                    
+                    <ul class="track-list">
+                        <li><strong>꽃 (FLOWER)</strong> (Главный сингл) - Поп-рок баллада с гитарным аккомпанементом</li>
+                        <li><strong>All Eyes On Me</strong> - Энергичный танцевальный трек</li>
+                        <li><strong>I'm Ready</strong> - Эмоциональная баллада с оркестровым сопровождением</li>
+                    </ul>
+                    
+                    <div class="achievements">
+                        <h4>Достижения альбома:</h4>
+                        <ul>
+                            <li>Более 50 миллионов просмотров за 24 часа на YouTube</li>
+                            <li>Рекордные продажи в первый день релиза</li>
+                            <li>Первое место в чартах 50 стран</li>
+                            <li>Награда "Лучший сольный дебют" на MAMA 2023</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Достижения -->
+    <section class="achievements-section" id="achievements">
+        <div class="container">
+            <div class="section-header">
+                <h2>МИРОВЫЕ <span style="color: var(--member-color);">ДОСТИЖЕНИЯ</span></h2>
+                <p>Рекорды и достижения Джису</p>
+            </div>
+            
+            <div class="achievements-list">
+                <div class="achievement-item">
+                    <div class="achievement-year">2023</div>
+                    <h3>Сольный дебют</h3>
+                    <p>Сингл "FLOWER" побил рекорд по продажам среди сольных релизов K-pop исполнителей.</p>
+                </div>
+                
+                <div class="achievement-item">
+                    <div class="achievement-year">2022</div>
+                    <h3>Актерский успех</h3>
+                    <p>Дорама "Snowdrop" с участием Джису стала одной из самых обсуждаемых дорам года.</p>
+                </div>
+                
+                <div class="achievement-item">
+                    <div class="achievement-year">2021</div>
+                    <h3>Бренд-амбассадор</h3>
+                    <p>Стала глобальным амбассадором Cartier, подтвердив свой статус иконы стиля.</p>
+                </div>
+                
+                <div class="achievement-item">
+                    <div class="achievement-year">2020</div>
+                    <h3>Социальное влияние</h3>
+                    <p>Вошла в список самых влиятельных знаменитостей Кореи по версии Forbes.</p>
+                </div>
+                
+                <div class="achievement-item">
+                    <div class="achievement-year">2019</div>
+                    <h3>Гуманитарная деятельность</h3>
+                    <p>Признана самой щедрой знаменитостью года за благотворительные пожертвования.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Галерея -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>ГАЛЕРЕЯ <span style="color: var(--member-color);">ДЖИСУ</span></h2>
+                <p>Лучшие моменты и фотографии</p>
+            </div>
+            
+            <div class="photo-gallery">
+                <div class="gallery-item">
+                    <img src="assets/img/jisoo-stage.jpg" id="img-auto" alt="Джису на сцене" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/jisoo-guitar.jpg" alt="Джису в студии" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/jisoo-photosission.jpg" alt="Джису на фотосессии" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/jisoo-portrait1.jpg" id="img-auto" alt="Джису на выступлении" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/jisoo-home.jpg" id="img-auto" alt="Джису в повседневной жизни" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/jisoo-red-carpet.jpg" id="img-auto" alt="Джису на красной дорожке" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/jisoo-red.jpg" id="img-auto" alt="Джису в красном" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/jisoo1.jpg" id="img-auto" alt="Джису портрет" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Навигация между участницами -->
+    <section class="member-navigation-section">
+        <div class="container">
+            <div class="member-navigation">
+                <a href="lisa.html" class="nav-btn prev">
+                    <i class="fas fa-arrow-left"></i>
+                    <div class="nav-text">
+                        <div class="nav-label">Предыдущая</div>
+                        <div class="nav-name">Лиса</div>
+                    </div>
+                </a>
+                
+                <a href="jennie.html" class="nav-btn next">
+                    <div class="nav-text">
+                        <div class="nav-label">Следующая</div>
+                        <div class="nav-name">Дженни</div>
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="site-footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-black">BLACK</span><span class="logo-pink">PINK</span>
+                        <span class="logo-sub">FAN VERSE</span>
+                    </div>
+                    <p class="footer-description">
+                        Неофициальный фан-сайт, созданный с любовью и уважением к группе BLACKPINK и их творчеству.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>БЫСТРЫЕ ССЫЛКИ</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">О группе</a></li>
+                        <li><a href="jisoo.html">Джису</a></li>
+                        <li><a href="jennie.html">Дженни</a></li>
+                        <li><a href="rose.html">Розэ</a></li>
+                        <li><a href="lisa.html">Лиса</a></li>
+                        <li><a href="vote.html">Выбор лучшей</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>ФАН-РЕСУРСЫ</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Фан-арт галерея</a></li>
+                        <li><a href="#">Тексты песен</a></li>
+                        <li><a href="#">Хронология</a></li>
+                        <li><a href="#">Форум фанатов</a></li>
+                        <li><a href="#">События</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>ПОДДЕРЖКА</h3>
+                    <ul class="footer-links">
+                        <li><a href="#footer">Обратная связь</a></li>
+                        <li><a href="#footer">Помощь</a></li>
+                        <li><a href="#footer">FAQ</a></li>
+                        <li><a href="#footer">Пожертвования</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Юридическое предупреждение -->
+            <div class="legal-disclaimer">
+                <h4><i class="fas fa-exclamation-triangle"></i> ЮРИДИЧЕСКОЕ УВЕДОМЛЕНИЕ</h4>
+                <p>
+                    Этот сайт является <strong>неофициальным фан-сайтом</strong>, созданным фанатами для фанатов. 
+                    Мы НЕ связаны с BLACKPINK, YG Entertainment или любыми их представителями.
+                </p>
+                <p>
+                    <strong>Все права на интеллектуальную собственность</strong> (имя "BLACKPINK", логотипы, 
+                    изображения, музыка, видео) принадлежат <strong>YG Entertainment</strong> и соответствующим 
+                    правообладателям. Этот сайт создан исключительно в образовательных и развлекательных целях 
+                    без намерения нарушения авторских прав.
+                </p>
+                <p>
+                    Если вы являетесь правообладателем и считаете, что какой-либо контент нарушает ваши права, 
+                    пожалуйста, свяжитесь с нами для немедленного удаления материала.
+                </p>
+                <div class="copyright">
+                    <p>&copy; 2023 BLACKPINK Fan Verse. Все права защищены. | Сделано с <i class="fas fa-heart" style="color: #ff0066;"></i> для BLINK</p>
+                    <p>Официальный сайт: <a href="https://www.ygfamily.com" target="_blank" rel="noopener">YG Entertainment</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Анимация силуэта при скролле
+            const silhouette = document.getElementById('jisooSilhouette');
+            
+            if (silhouette) {
+                window.addEventListener('scroll', function() {
+                    const scrolled = window.pageYOffset;
+                    const rate = scrolled * -0.3;
+                    silhouette.style.transform = `translateY(${rate}px)`;
+                });
+                
+                // Интерактивная анимация при наведении
+                silhouette.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05)';
+                    this.style.boxShadow = '0 30px 60px rgba(255, 77, 109, 0.4)';
+                });
+                
+                silhouette.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                    this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.5)';
+                });
+            }
+            
+            // Инициализация мобильного меню
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    mainNav.classList.toggle('active');
+                });
+            }
+            
+            // Lightbox для галереи
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const imgSrc = this.querySelector('img').src;
+                    openLightbox(imgSrc);
+                });
+            });
+            
+            function openLightbox(src) {
+                const lightbox = document.createElement('div');
+                lightbox.className = 'lightbox';
+                lightbox.innerHTML = `
+                    <div class="lightbox-content">
+                        <img src="${src}" alt="Увеличенное изображение">
+                        <button class="lightbox-close"><i class="fas fa-times"></i></button>
+                    </div>
+                `;
+                
+                document.body.appendChild(lightbox);
+                
+                // Закрытие lightbox
+                lightbox.addEventListener('click', function(e) {
+                    if (e.target === lightbox || e.target.closest('.lightbox-close')) {
+                        document.body.removeChild(lightbox);
+                    }
+                });
+                
+                // Закрытие по ESC
+                document.addEventListener('keydown', function closeOnEsc(e) {
+                    if (e.key === 'Escape') {
+                        if (document.body.contains(lightbox)) {
+                            document.body.removeChild(lightbox);
+                        }
+                        document.removeEventListener('keydown', closeOnEsc);
+                    }
+                });
+            }
+            
+            // Плавная прокрутка
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    
+                    if (href.startsWith('#') && href.length > 1) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
