@@ -14,6 +14,7 @@
     <style>
         :root {
             --jennie: #ff0066;
+            --member-rgb: 255, 60, 100;
         }
         
         .member-hero {
@@ -128,6 +129,17 @@
             color: rgba(255,255,255,0.8);
             margin-bottom: 2rem;
         }
+
+        .facts-section {
+            background: rgba(255,255,255,0.03);
+            padding: 4rem 0;
+        }
+        
+        .fact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
         
         .facts-section {
             background: rgba(255,255,255,0.03);
@@ -141,10 +153,10 @@
         }
         
         .fact-card {
-            background: rgba(255,0,102,0.05);
+            background: rgba(var(--member-rgb), 0.05);
             border-radius: 15px;
             padding: 2rem;
-            border: 1px solid rgba(255,0,102,0.1);
+            border: 1px solid rgba(var(--member-rgb), 0.1);
             transition: var(--transition);
         }
         
@@ -170,6 +182,131 @@
             line-height: 1.6;
         }
 
+        .talent-section {
+            padding: 4rem 0;
+            background: rgba(255,255,255,0.03);
+        }
+        
+        .talent-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .talent-card {
+            background: rgba(var(--member-rgb), 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(var(--member-rgb), 0.1);
+            transition: var(--transition);
+        }
+        
+        .talent-card:hover {
+            border-color: var(--jennie);
+            transform: translateY(-5px);
+        }
+        
+        .talent-icon {
+            font-size: 2.5rem;
+            color: var(--jennie);
+            margin-bottom: 1rem;
+        }
+        
+        .talent-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .dance-section {
+            padding: 4rem 0;
+            background: rgba(255,255,255,0.03);
+        }
+        
+        .dance-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .dance-card {
+            background: rgba(var(--member-rgb), 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(var(--member-rgb), 0.1);
+            transition: var(--transition);
+        }
+        
+        .dance-card:hover {
+            border-color: var(--jennie);
+            transform: translateY(-5px);
+        }
+        
+        .dance-icon {
+            font-size: 2.5rem;
+            color: var(--jennie);
+            margin-bottom: 1rem;
+        }
+        
+        .dance-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .music-section {
+            padding: 4rem 0;
+            background: rgba(0,0,0,0.9);
+        }
+        
+        .solo-album {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+            background: rgba(var(--member-rgb), 0.05);;
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(var(--member-rgb), 0.1);;
+        }
+
+        .solo-album:hover {
+            border-color: var(--jennie);
+        }
+        
+        .album-cover {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .album-cover img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .album-info h3 {
+            color: var(--jennie);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .track-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        
+        .track-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.8);
+        }
+
         .achievements-section {
             padding: 4rem 0;
             background: rgba(0,0,0,0.9);
@@ -181,7 +318,7 @@
         }
         
         .achievement-item {
-            background: rgba(255,204,0,0.05);
+            background: rgba(var(--member-rgb), 0.05);
             border-radius: 10px;
             padding: 1.5rem;
             margin-bottom: 1rem;
@@ -190,7 +327,7 @@
         }
         
         .achievement-item:hover {
-            background: rgba(255,204,0,0.1);
+            background: rgba(var(--member-rgb), 0.1);
             transform: translateX(10px);
         }
         
@@ -301,7 +438,7 @@
     <header class="site-header" id="siteHeader">
         <div class="header-container">
             <div class="logo">
-                <a href="index.html">
+                <a href="home.html">
                     <span class="logo-black">BLACK</span>
                     <span class="logo-pink">PINK</span>
                     <span class="logo-sub">FAN VERSE</span>
@@ -321,9 +458,15 @@
                         </ul>
                     </li>
                     <li><a href="vote.html"><i class="fas fa-gamepad"></i> ВЫБОР ЛУЧШЕЙ</a></li>
-                    <li><a href="index.html#footer"><i class="fas fa-heart"></i> ФАН-ЗОНА</a></li>
+                    <li><a href="home.html#footer"><i class="fas fa-heart"></i> ФАН-ЗОНА</a></li>
                 </ul>
             </nav>
+
+            <div class="return-to-door-header">
+                <a href="index.html" class="btn-header" title="Вернуться">
+                    <i class="fas fa-door-open"></i>
+                </a>
+            </div>
             
             <button class="menu-toggle" id="menuToggle" aria-label="Меню">
                 <span></span>
@@ -338,7 +481,7 @@
         <div class="container member-container">
             <div class="member-visual">
                 <div class="member-silhouette" id="jennieSilhouette">
-                    <img src="assets/img/jennie-main.jpg" alt="Дженни" class="member-portrait">
+                    <img src="assets/img/jennie/jennie-main.jpg" alt="Дженни" class="member-portrait">
                 </div>
             </div>
             
@@ -453,43 +596,171 @@
         </div>
     </section>
 
-    <!-- Достижения -->
+    <!-- Таланты -->
+    <section class="talent-section" id="talent">
+        <div class="container">
+            <div class="section-header">
+                <h2>ТАЛАНТЫ <span style="color: var(--jennie);">ДЖЕННИ</span></h2>
+                <p>Уникальные способности и навыки</p>
+            </div>
+            
+            <div class="talent-grid">
+                <div class="talent-card">
+                    <div class="talent-icon">
+                        <i class="fas fa-microphone-alt"></i>
+                    </div>
+                    <h3>Вокальный стиль</h3>
+                    <p>Дженни обладает уникальным вокальным тембром, который идеально сочетает мощь и нежность. Её голос легко узнаваем в любой песне.</p>
+                </div>
+                
+                <div class="talent-card">
+                    <div class="talent-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Рэп-мастерство</h3>
+                    <p>Как главная рэперша, Дженни демонстрирует безупречную дикцию, ритмичность и агрессивный стиль, который стал визитной карточкой BLACKPINK.</p>
+                </div>
+                
+                <div class="talent-card">
+                    <div class="talent-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Сценическое присутствие</h3>
+                    <p>Её харизма и уверенность на сцене не оставляют равнодушными. Дженни умеет полностью захватить внимание аудитории.</p>
+                </div>
+                
+                <div class="talent-card">
+                    <div class="talent-icon">
+                        <i class="fas fa-pen-nib"></i>
+                    </div>
+                    <h3>Творческий вклад</h3>
+                    <p>Участвовала в написании текстов для песен BLACKPINK, включая "Lovesick Girls", демонстрируя свой творческий потенциал.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Танцевальные навыки -->
+    <section class="dance-section" id="dance">
+        <div class="container">
+            <div class="section-header">
+                <h2>ТАНЦЕВАЛЬНЫЕ <span style="color: var(--jennie);">НАВЫКИ</span></h2>
+                <p>Мощь и грация на сцене</p>
+            </div>
+            
+            <div class="dance-showcase">
+                <div class="dance-card">
+                    <div class="dance-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Королевская подача</h3>
+                    <p>Танцевальный стиль Дженни отличается королевской осанкой, уверенными движениями и безупречным исполнением.</p>
+                </div>
+                
+                <div class="dance-card">
+                    <div class="dance-icon">
+                        <i class="fas fa-expand-alt"></i>
+                    </div>
+                    <h3>Экспрессивность</h3>
+                    <p>Каждое её движение наполнено эмоциями и смыслом, что создает особую драматургию во время выступлений.</p>
+                </div>
+                
+                <div class="dance-card">
+                    <div class="dance-icon">
+                        <i class="fas fa-sync"></i>
+                    </div>
+                    <h3>Синхронность</h3>
+                    <p>Идеально синхронизируется с группой, при этом сохраняя свою уникальную манеру исполнения.</p>
+                </div>
+                
+                <div class="dance-card">
+                    <div class="dance-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Элегантная мощь</h3>
+                    <p>Сочетает в танце мощные, энергичные движения с удивительной женственностью и грацией.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сольные работы -->
+    <section class="music-section" id="music">
+        <div class="container">
+            <div class="section-header">
+                <h2>СОЛЬНЫЕ <span style="color: var(--jennie);">РАБОТЫ</span></h2>
+                <p>Индивидуальное творчество Дженни</p>
+            </div>
+            
+            <div class="solo-album">
+                <div class="album-cover">
+                    <img src="assets/img/jennie/solo.jpg" alt="SOLO - SINGLE">
+                </div>
+                <div class="album-info">
+                    <h3>SOLO (2018)</h3>
+                    <p>Дебютный сольный сингл Дженни, выпущенный 12 ноября 2018 года. Трек стал мировым хитом и установил несколько рекордов.</p>
+                    
+                    <ul class="track-list">
+                        <li><strong>SOLO</strong> - Главный сингл, сочетающий поп и хип-хоп элементы</li>
+                    </ul>
+                    
+                    <div class="achievements">
+                        <h4>Достижения сингла:</h4>
+                        <ul>
+                            <li>Более 36 миллионов просмотров за 24 часа на YouTube (на момент релиза)</li>
+                            <li>Perfect All-Kill в корейских музыкальных чартах</li>
+                            <li>Первое место на музыкальных шоу в течение 2 недель</li>
+                            <li>Высокие позиции в мировых чартах, включая Billboard</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Достижения -->
     <section class="achievements-section" id="achievements">
         <div class="container">
             <div class="section-header">
                 <h2>МИРОВЫЕ <span style="color: var(--jennie);">ДОСТИЖЕНИЯ</span></h2>
-                <p>Рекорды и достижения Лисы</p>
+                <p>Рекорды и достижения Дженни</p>
             </div>
             
             <div class="achievements-list">
                 <div class="achievement-item">
-                    <div class="achievement-year">2021</div>
-                    <h3>Сольный дебют</h3>
-                    <p>Сингл "LALISA" установил рекорд по просмотрам за 24 часа среди сольных исполнителей.</p>
+                    <div class="achievement-year">2023</div>
+                    <h3>Модная икона</h3>
+                    <p>Стала первым глобальным амбассадором Chanel среди K-pop артистов, подтвердив статус "человека Chanel".</p>
+                </div>
+                
+                <div class="achievement-item">
+                    <div class="achievement-year">2022</div>
+                    <h3>Собственный лейбл</h3>
+                    <p>Основала собственный лейбл "Odd Atelier" (OA) для независимой творческой деятельности.</p>
                 </div>
                 
                 <div class="achievement-item">
                     <div class="achievement-year">2021</div>
-                    <h3>Guinness World Records</h3>
-                    <p>Лиса попала в Книгу рекордов Гиннесса как самая популярная K-pop звезда в Instagram.</p>
+                    <h3>Актерский дебют</h3>
+                    <p>Снялась в американском сериале "The Idol", расширив своё присутствие на международной арене.</p>
                 </div>
                 
                 <div class="achievement-item">
                     <div class="achievement-year">2020</div>
-                    <h3>Судья на шоу талантов</h3>
-                    <p>Стала судьей на китайском шоу талантов "Youth With You", что повысило её популярность в Азии.</p>
+                    <h3>Сольный успех</h3>
+                    <p>Сингл "SOLO" стал первым сольным релизом K-pop артистки, набравшим 700 миллионов просмотров на YouTube.</p>
                 </div>
                 
                 <div class="achievement-item">
                     <div class="achievement-year">2019</div>
-                    <h3>Global Influence</h3>
-                    <p>Признана одной из самых влиятельных знаменитостей Азии по версии различных медиа.</p>
+                    <h3>Глобальное признание</h3>
+                    <p>Вошла в список "30 самых влиятельных подростков мира" по версии Time Magazine.</p>
                 </div>
                 
                 <div class="achievement-item">
                     <div class="achievement-year">2018</div>
-                    <h3>Фан-база</h3>
-                    <p>Стала первой K-pop звездой, достигшей 30 миллионов подписчиков в Instagram.</p>
+                    <h3>Исторический дебют</h3>
+                    <p>Стала первой участницей BLACKPINK, выпустившей сольный сингл, который возглавил чарты по всему миру.</p>
                 </div>
             </div>
         </div>
@@ -505,28 +776,28 @@
             
             <div class="photo-gallery">
                 <div class="gallery-item">
-                    <img src="assets/img/jennie-stage.jpg" alt="Дженни на сцене" loading="lazy">
+                    <img src="assets/img/jennie/jennie-stage.jpg" alt="Дженни на сцене" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/jennie-gitar.jpg" alt="Дженни с гитарой" loading="lazy">
+                    <img src="assets/img/jennie/jennie-gitar.jpg" alt="Дженни с гитарой" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/jennie-photosission.jpg" alt="Дженни на фотосессии" loading="lazy">
+                    <img src="assets/img/jennie/jennie-photosission.jpg" alt="Дженни на фотосессии" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/jennie-portrait1.jpg" alt="Дженни на выступлении" loading="lazy">
+                    <img src="assets/img/jennie/jennie-portrait1.jpg" alt="Дженни на выступлении" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/jennie-home.jpg" alt="Дженни в повседневной жизни" loading="lazy">
+                    <img src="assets/img/jennie/jennie-home.jpg" alt="Дженни в повседневной жизни" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/jennie-red-carpet.jpg" alt="Дженни на красной дорожке" loading="lazy">
+                    <img src="assets/img/jennie/jennie-red-carpet.jpg" alt="Дженни на красной дорожке" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/jennie5.jpg" alt="Дженни на красной дорожке" loading="lazy">
+                    <img src="assets/img/jennie/jennie5.jpg" alt="Дженни на красной дорожке" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/jennie6.jpg" alt="Дженни на красной дорожке" loading="lazy">
+                    <img src="assets/img/jennie/jennie6.jpg" alt="Дженни на красной дорожке" loading="lazy">
                 </div>
             </div>
         </div>

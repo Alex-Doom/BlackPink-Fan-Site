@@ -138,6 +138,47 @@
             color: rgba(255,255,255,0.8);
             margin-bottom: 2rem;
         }
+
+        .facts-section {
+            background: rgba(255,255,255,0.03);
+            padding: 4rem 0;
+        }
+        
+        .fact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .fact-card {
+            background: rgba(255,102,178,0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255,102,178,0.1);
+            transition: var(--transition);
+        }
+        
+        .fact-card:hover {
+            border-color: var(--rose);
+            transform: translateY(-5px);
+        }
+        
+        .fact-icon {
+            font-size: 2rem;
+            color: var(--rose);
+            margin-bottom: 1rem;
+        }
+        
+        .fact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        
+        .fact-card p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+        }
         
         .talent-section {
             padding: 4rem 0;
@@ -176,6 +217,44 @@
             margin-bottom: 1rem;
             color: var(--white);
         }
+
+        .dance-section {
+            padding: 4rem 0;
+            background: rgba(255,255,255,0.03);
+        }
+        
+        .dance-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .dance-card {
+            background: rgba(255,102,178,0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255,102,178,0.1);
+            transition: var(--transition);
+        }
+        
+        .dance-card:hover {
+            border-color: var(--rose);
+            transform: translateY(-5px);
+        }
+        
+        .dance-icon {
+            font-size: 2.5rem;
+            color: var(--rose);
+            margin-bottom: 1rem;
+        }
+        
+        .dance-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
         
         .music-section {
             padding: 4rem 0;
@@ -191,6 +270,10 @@
             border-radius: 20px;
             padding: 2rem;
             border: 1px solid rgba(255,102,178,0.1);
+        }
+
+        .solo-album:hover {
+            border-color: var(--rose);
         }
         
         .album-cover {
@@ -233,7 +316,7 @@
         }
         
         .achievement-item {
-            background: rgba(255,204,0,0.05);
+            background: rgba(255,102,178,0.05);
             border-radius: 10px;
             padding: 1.5rem;
             margin-bottom: 1rem;
@@ -242,7 +325,7 @@
         }
         
         .achievement-item:hover {
-            background: rgba(255,204,0,0.1);
+            background: rgba(255,102,178,0.1);
             transform: translateX(10px);
         }
         
@@ -310,7 +393,7 @@
         
         .nav-btn:hover {
             background: rgba(255,0,102,0.1);
-            border-color: var(--jennie);
+            border-color: var(--rose);
         }
         
         .nav-btn.prev i {
@@ -344,7 +427,7 @@
     <header class="site-header" id="siteHeader">
         <div class="header-container">
             <div class="logo">
-                <a href="index.html">
+                <a href="home.html">
                     <span class="logo-black">BLACK</span>
                     <span class="logo-pink">PINK</span>
                     <span class="logo-sub">FAN VERSE</span>
@@ -364,9 +447,15 @@
                         </ul>
                     </li>
                     <li><a href="vote.html"><i class="fas fa-gamepad"></i> ВЫБОР ЛУЧШЕЙ</a></li>
-                    <li><a href="index.html#footer"><i class="fas fa-heart"></i> ФАН-ЗОНА</a></li>
+                    <li><a href="home.html#footer"><i class="fas fa-heart"></i> ФАН-ЗОНА</a></li>
                 </ul>
             </nav>
+
+            <div class="return-to-door-header">
+                <a href="index.html" class="btn-header" title="Вернуться">
+                    <i class="fas fa-door-open"></i>
+                </a>
+            </div>
             
             <button class="menu-toggle" id="menuToggle" aria-label="Меню">
                 <span></span>
@@ -381,7 +470,7 @@
         <div class="container member-container">
             <div class="member-visual">
                 <div class="member-silhouette" id="roseSilhouette">
-                    <img src="assets/img/rose.jpg" alt="Розэ" class="member-portrait">
+                    <img src="assets/img/rose/rose.jpg" alt="Розэ" class="member-portrait">
                 </div>
             </div>
             
@@ -436,6 +525,66 @@
         </div>
     </section>
 
+     <!-- Интересные факты -->
+    <section class="facts-section" id="facts">
+        <div class="container">
+            <div class="section-header">
+                <h2>ИНТЕРЕСНЫЕ <span style="color: var(--rose);">ФАКТЫ</span> О РОЗЭ</h2>
+                <p>Узнайте больше о главной вокалистке BLACKPINK</p>
+            </div>
+            
+            <div class="fact-grid">
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <h3>Международное воспитание</h3>
+                    <p>Розэ родилась в Новой Зеландии и переехала в Австралию в возрасте 8 лет, где прожила 10 лет перед переездом в Корею.</p>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Музыкальные корни</h3>
+                    <p>В детстве играла на пианино и гитаре. Её отец - юрист, мать - бизнесвумен, но всегда поддерживали её музыкальные увлечения.</p>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Три языка</h3>
+                    <p>Свободно говорит на корейском, английском и японском языках, что делает её одной из самых многоязычных участниц группы.</p>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Фан-культура</h3>
+                    <p>Её фандом называется "Rosé's Petals", а индивидуальный светящийся жезл — черный с синей розой.</p>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Рекорды</h3>
+                    <p>Её сольный сингл "On The Ground" побил рекорд по просмотрам за 24 часа среди сольных исполнительниц K-pop.</p>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <i class="fas fa-guitar"></i>
+                    </div>
+                    <h3>Любимый инструмент</h3>
+                    <p>Свою первую гитару получила в подарок от отца в возрасте 15 лет и с тех пор не расстается с ней.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Таланты -->
     <section class="talent-section" id="talent">
         <div class="container">
@@ -480,6 +629,50 @@
         </div>
     </section>
 
+    <!-- Танцевальные навыки -->
+    <section class="dance-section" id="dance">
+        <div class="container">
+            <div class="section-header">
+                <h2>ТАНЦЕВАЛЬНЫЕ <span style="color: var(--rose);">НАВЫКИ</span></h2>
+                <p>Элегантность и точность на сцене</p>
+            </div>
+            
+            <div class="dance-showcase">
+                <div class="dance-card">
+                    <div class="dance-icon">
+                        <i class="fas fa-feather-alt"></i>
+                    </div>
+                    <h3>Легкость движений</h3>
+                    <p>Танцевальный стиль Розэ отличается невероятной легкостью и плавностью, как будто она парит над сценой.</p>
+                </div>
+                
+                <div class="dance-card">
+                    <div class="dance-icon">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <h3>Выразительность</h3>
+                    <p>Каждое её движение наполнено эмоциями и смыслом, создавая целую историю в танце.</p>
+                </div>
+                
+                <div class="dance-card">
+                    <div class="dance-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <h3>Техническая точность</h3>
+                    <p>Как ведущая танцовщица, Розэ демонстрирует безупречную технику и точность каждого движения.</p>
+                </div>
+                
+                <div class="dance-card">
+                    <div class="dance-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>Плавность и грация</h3>
+                    <p>Её танцы напоминают течение воды - настолько они естественны и гармоничны.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Музыка -->
     <section class="music-section" id="music">
         <div class="container">
@@ -490,7 +683,7 @@
             
             <div class="solo-album">
                 <div class="album-cover">
-                    <img src="assets/img/album-covers/rose-solo.jpg" alt="R - THE ALBUM">
+                    <img src="assets/img/rose/R_(single_Rose).png" alt="R - THE ALBUM">
                 </div>
                 <div class="album-info">
                     <h3>R - THE ALBUM (2021)</h3>
@@ -514,47 +707,55 @@
         </div>
     </section>
 
-    <!-- Достижения -->
+        <!-- Достижения -->
     <section class="achievements-section" id="achievements">
         <div class="container">
             <div class="section-header">
                 <h2>МИРОВЫЕ <span style="color: var(--rose);">ДОСТИЖЕНИЯ</span></h2>
-                <p>Рекорды и достижения Лисы</p>
+                <p>Рекорды и достижения Розэ</p>
             </div>
             
             <div class="achievements-list">
                 <div class="achievement-item">
-                    <div class="achievement-year">2021</div>
-                    <h3>Сольный дебют</h3>
-                    <p>Сингл "LALISA" установил рекорд по просмотрам за 24 часа среди сольных исполнителей.</p>
+                    <div class="achievement-year">2023</div>
+                    <h3>Исторический рекорд</h3>
+                    <p>"On The Ground" стала первой песней сольной K-pop артистки, возглавившей мировой чарт Spotify.</p>
+                </div>
+                
+                <div class="achievement-item">
+                    <div class="achievement-year">2022</div>
+                    <h3>Бренд-амбассадор</h3>
+                    <p>Стала глобальным амбассадором Tiffany & Co., представляя коллекцию Lock и другие ювелирные линии.</p>
                 </div>
                 
                 <div class="achievement-item">
                     <div class="achievement-year">2021</div>
-                    <h3>Guinness World Records</h3>
-                    <p>Лиса попала в Книгу рекордов Гиннесса как самая популярная K-pop звезда в Instagram.</p>
+                    <h3>Сольный дебют</h3>
+                    <p>Альбом "R" установил рекорд как самый продаваемый альбом сольной артистки в истории K-pop.</p>
+                </div>
+                
+                <div class="achievement-item">
+                    <div class="achievement-year">2021</div>
+                    <h3>Рекорд YouTube</h3>
+                    <p>Клип "On The Ground" набрал 41,6 млн просмотров за 24 часа - рекорд для сольной K-pop артистки.</p>
                 </div>
                 
                 <div class="achievement-item">
                     <div class="achievement-year">2020</div>
-                    <h3>Судья на шоу талантов</h3>
-                    <p>Стала судьей на китайском шоу талантов "Youth With You", что повысило её популярность в Азии.</p>
+                    <h3>Музыкальный талант</h3>
+                    <p>Признана лучшей вокалисткой K-pop по версии нескольких музыкальных критиков и изданий.</p>
                 </div>
                 
                 <div class="achievement-item">
                     <div class="achievement-year">2019</div>
-                    <h3>Global Influence</h3>
-                    <p>Признана одной из самых влиятельных знаменитостей Азии по версии различных медиа.</p>
-                </div>
-                
-                <div class="achievement-item">
-                    <div class="achievement-year">2018</div>
-                    <h3>Фан-база</h3>
-                    <p>Стала первой K-pop звездой, достигшей 30 миллионов подписчиков в Instagram.</p>
+                    <h3>Международное признание</h3>
+                    <p>Стала первой K-pop артисткой, выступившей на фестивале Коачелла в качестве участницы группы.</p>
                 </div>
             </div>
         </div>
     </section>
+
+
 
     <!-- Галерея -->
     <section class="gallery-section" id="gallery">
@@ -566,28 +767,28 @@
             
             <div class="photo-gallery">
                 <div class="gallery-item">
-                    <img src="assets/img/rose-stage1.jpg" alt="Розэ на сцене" loading="lazy">
+                    <img src="assets/img/rose/rose-stage1.jpg" alt="Розэ на сцене" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/rose-guitar.jpg" alt="Розэ в студии" loading="lazy">
+                    <img src="assets/img/rose/rose-guitar.jpg" alt="Розэ в студии" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/rose-photosession.jpg" alt="Розэ на фотосессии" loading="lazy">
+                    <img src="assets/img/rose/rose-photosession.jpg" alt="Розэ на фотосессии" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/rose-stage.jpg" alt="Розэ на выступлении" loading="lazy">
+                    <img src="assets/img/rose/rose-stage.jpg" alt="Розэ на выступлении" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/rose-home.jpg" id="rose" alt="Розэ в повседневной жизни" loading="lazy">
+                    <img src="assets/img/rose/rose-home.jpg" id="rose" alt="Розэ в повседневной жизни" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/rose-red-carpet.jpg" alt="Розэ на красной дорожке" loading="lazy">
+                    <img src="assets/img/rose/rose-red-carpet.jpg" alt="Розэ на красной дорожке" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/rose-main.jpg" alt="Розэ" id="rose" loading="lazy">
+                    <img src="assets/img/rose/rose-main.jpg" alt="Розэ" id="rose" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/rose-portrait2.jpg" id="rose" alt="Розэ" loading="lazy">
+                    <img src="assets/img/rose/rose-portrait2.jpg" id="rose" alt="Розэ" loading="lazy">
                 </div>
             </div>
         </div>

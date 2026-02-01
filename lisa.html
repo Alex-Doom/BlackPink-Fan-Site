@@ -134,6 +134,85 @@
             color: rgba(255,255,255,0.8);
             margin-bottom: 2rem;
         }
+
+        .facts-section {
+            background: rgba(255,255,255,0.03);
+            padding: 4rem 0;
+        }
+        
+        .fact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .fact-card {
+            background: rgba(255,204,0,0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255,204,0,0.1);
+            transition: var(--transition);
+        }
+        
+        .fact-card:hover {
+            border-color: var(--lisa);
+            transform: translateY(-5px);
+        }
+        
+        .fact-icon {
+            font-size: 2rem;
+            color: var(--lisa);
+            margin-bottom: 1rem;
+        }
+        
+        .fact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        
+        .fact-card p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+        }
+
+        .talent-section {
+            padding: 4rem 0;
+            background: rgba(255,255,255,0.03);
+        }
+        
+        .talent-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .talent-card {
+            background: rgba(255,204,0,0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255,204,0,0.1);
+            transition: var(--transition);
+        }
+        
+        .talent-card:hover {
+            border-color: var(--lisa);
+            transform: translateY(-5px);
+        }
+        
+        .talent-icon {
+            font-size: 2.5rem;
+            color: var(--lisa);
+            margin-bottom: 1rem;
+        }
+        
+        .talent-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
         
         .dance-section {
             padding: 4rem 0;
@@ -171,6 +250,55 @@
             font-size: 1.3rem;
             margin-bottom: 1rem;
             color: var(--white);
+        }
+
+        .music-section {
+            padding: 4rem 0;
+            background: rgba(0,0,0,0.9);
+        }
+        
+        .solo-album {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+            background: rgba(255,204,0,0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255,204,0,0.1);
+        }
+
+        .solo-album:hover {
+            border-color: var(--lisa);
+        }
+        
+        .album-cover {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .album-cover img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .album-info h3 {
+            color: var(--lisa);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .track-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        
+        .track-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.8);
         }
         
         .achievements-section {
@@ -261,7 +389,7 @@
         
         .nav-btn:hover {
             background: rgba(255,0,102,0.1);
-            border-color: var(--jennie);
+            border-color: var(--lisa);
         }
         
         .nav-btn.prev i {
@@ -295,7 +423,7 @@
     <header class="site-header" id="siteHeader">
         <div class="header-container">
             <div class="logo">
-                <a href="index.html">
+                <a href="home.html">
                     <span class="logo-black">BLACK</span>
                     <span class="logo-pink">PINK</span>
                     <span class="logo-sub">FAN VERSE</span>
@@ -315,9 +443,15 @@
                         </ul>
                     </li>
                     <li><a href="vote.html"><i class="fas fa-gamepad"></i> ВЫБОР ЛУЧШЕЙ</a></li>
-                    <li><a href="index.html#footer"><i class="fas fa-heart"></i> ФАН-ЗОНА</a></li>
+                    <li><a href="home.html#footer"><i class="fas fa-heart"></i> ФАН-ЗОНА</a></li>
                 </ul>
             </nav>
+
+            <div class="return-to-door-header">
+                <a href="index.html" class="btn-header" title="Вернуться">
+                    <i class="fas fa-door-open"></i>
+                </a>
+            </div>
             
             <button class="menu-toggle" id="menuToggle" aria-label="Меню">
                 <span></span>
@@ -332,7 +466,7 @@
         <div class="container member-container">
             <div class="member-visual">
                 <div class="member-silhouette" id="lisaSilhouette">
-                    <img src="assets/img/lisa.jpg" alt="Лиса" class="member-portrait">
+                    <img src="assets/img/lisa/lisa.jpg" alt="Лиса" class="member-portrait">
                 </div>
             </div>
             
@@ -387,6 +521,110 @@
         </div>
     </section>
 
+     <!-- Интересные факты -->
+    <section class="facts-section" id="facts">
+        <div class="container">
+            <div class="section-header">
+                <h2>ИНТЕРЕСНЫЕ <span style="color: var(--lisa);">ФАКТЫ</span> О ЛИСЕ</h2>
+                <p>Узнайте больше о главной танцовщице BLACKPINK</p>
+            </div>
+            
+            <div class="fact-grid">
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <h3>Тайская принцесса</h3>
+                    <p>Лиса — первая тайская K-pop звезда, достигшая мировой известности. В Таиланде её называют "Тайской принцессой".</p>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Ранние достижения</h3>
+                    <p>В возрасте 14 лет выиграла второе место на танцевальном конкурсе в Таиланде, что привлекло внимание YG Entertainment.</p>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Полиглот</h3>
+                    <p>Свободно говорит на тайском, корейском, английском и японском языках, а также изучает китайский.</p>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Фан-культура</h3>
+                    <p>Её фандом называется "Lilies", а индивидуальный светящийся жезл — черный с желтым бантом.</p>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Социальное влияние</h3>
+                    <p>Является самой подписываемой K-pop звездой в Instagram с более чем 90 миллионами подписчиков.</p>
+                </div>
+                
+                <div class="fact-card">
+                    <div class="fact-icon">
+                        <i class="fas fa-paw"></i>
+                    </div>
+                    <h3>Питомцы</h3>
+                    <p>У Лисы есть пять собак: Лука, Лео, Луи, Лион и Лили, о которых она часто заботится и публикует их фото.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Таланты -->
+    <section class="talent-section" id="talent">
+        <div class="container">
+            <div class="section-header">
+                <h2>ТАЛАНТЫ <span style="color: var(--lisa);">ЛИСА</span></h2>
+                <p>Многогранность главной танцовщицы</p>
+            </div>
+            
+            <div class="talent-grid">
+                <div class="talent-card">
+                    <div class="talent-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Рэп-навыки</h3>
+                    <p>Лиса обладает мощным и четким рэп-стилем с уникальной подачей. Её рэп-партии часто становятся культовыми.</p>
+                </div>
+                
+                <div class="talent-card">
+                    <div class="talent-icon">
+                        <i class="fas fa-microphone-alt"></i>
+                    </div>
+                    <h3>Вокальные способности</h3>
+                    <p>Несмотря на позицию рэпера, Лиса демонстрирует отличные вокальные данные в своих партиях.</p>
+                </div>
+                
+                <div class="talent-card">
+                    <div class="talent-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Хореография</h3>
+                    <p>Создает собственные танцевальные постановки и часто вносит изменения в хореографию группы.</p>
+                </div>
+                
+                <div class="talent-card">
+                    <div class="talent-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Лингвистические навыки</h3>
+                    <p>Быстро изучает языки, что помогает группе в международном промоушене и общении с фанатами по всему миру.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Танцевальные навыки -->
     <section class="dance-section" id="dance">
         <div class="container">
@@ -426,6 +664,41 @@
                     </div>
                     <h3>Хореография</h3>
                     <p>Участвует в создании хореографии для BLACKPINK и часто демонстрирует собственные танцевальные постановки.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сольные работы -->
+    <section class="music-section" id="music">
+        <div class="container">
+            <div class="section-header">
+                <h2>СОЛЬНЫЕ <span style="color: var(--lisa);">РАБОТЫ</span></h2>
+                <p>Индивидуальное творчество Лисы</p>
+            </div>
+            
+            <div class="solo-album">
+                <div class="album-cover">
+                    <img src="assets/img/lisa/lalisa.webp" alt="LALISA - ALBUM">
+                </div>
+                <div class="album-info">
+                    <h3>LALISA (2021)</h3>
+                    <p>Дебютный сольный альбом Лисы, выпущенный 10 сентября 2021 года. Альбом установил несколько мировых рекордов.</p>
+                    
+                    <ul class="track-list">
+                        <li><strong>LALISA</strong> (Главный сингл) - Энергичный трек с тайскими музыкальными элементами</li>
+                        <li><strong>MONEY</strong> - Хип-хоп трек с качающим битом</li>
+                    </ul>
+                    
+                    <div class="achievements">
+                        <h4>Достижения альбома:</h4>
+                        <ul>
+                            <li>Более 73.6 миллионов просмотров за 24 часа на YouTube (мировой рекорд для сольного артиста)</li>
+                            <li>Первое место в iTunes в 65 странах</li>
+                            <li>10 миллионов предзаказов альбома</li>
+                            <li>Высшие позиции в мировых чартах, включая Billboard 200</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -483,28 +756,28 @@
             
             <div class="photo-gallery">
                 <div class="gallery-item">
-                    <img src="assets/img/lisa-stage.jpg" alt="Лиса на сцене" loading="lazy">
+                    <img src="assets/img/lisa/lisa-stage.jpg" alt="Лиса на сцене" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/lisa-studio.jpg" alt="Лиса в студии" loading="lazy">
+                    <img src="assets/img/lisa/lisa-studio.jpg" alt="Лиса в студии" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/lisa-photosission.jpg" alt="Лиса на фотосессии" loading="lazy">
+                    <img src="assets/img/lisa/lisa-photosission.jpg" alt="Лиса на фотосессии" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/lisa-portrait1.jpg" alt="Лиса на выступлении" loading="lazy">
+                    <img src="assets/img/lisa/lisa-portrait1.jpg" alt="Лиса на выступлении" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/lisa-home.jpg" alt="Лиса в повседневной жизни" loading="lazy">
+                    <img src="assets/img/lisa/lisa-home.jpg" alt="Лиса в повседневной жизни" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/lisa-red-carpet.jpg" alt="Лиса на красной дорожке" loading="lazy">
+                    <img src="assets/img/lisa/lisa-red-carpet.jpg" alt="Лиса на красной дорожке" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/lisa1.jpg" alt="Лиса" loading="lazy">
+                    <img src="assets/img/lisa/lisa1.jpg" alt="Лиса" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/lisa2.jpg" alt="Лиса" loading="lazy">
+                    <img src="assets/img/lisa/lisa2.jpg" alt="Лиса" loading="lazy">
                 </div>
             </div>
         </div>

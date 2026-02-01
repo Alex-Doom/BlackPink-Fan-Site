@@ -119,6 +119,27 @@ body.door-active {
     z-index: 2;
 }
 
+/* Кнопка в хедере */
+.return-to-door-header .btn-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 0, 255, 0.1);
+    border: 1px solid rgba(255, 0, 255, 0.3);
+    color: var(--white);
+    text-decoration: none;
+    transition: var(--transition);
+    margin-left: 10px;
+}
+
+.return-to-door-header .btn-header:hover {
+    background: rgba(255, 0, 255, 0.3);
+    transform: rotate(-15deg);
+}
+
 .logo-text {
     font-family: 'Montserrat', sans-serif;
     font-size: 5.5rem;

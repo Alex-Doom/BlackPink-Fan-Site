@@ -13,7 +13,7 @@
 
     <style>
         :root {
-            --member-color: #ff4d6d;
+            --jisoo: #ff4d6d;
             --member-rgb: 255, 77, 109;
         }
         
@@ -54,7 +54,7 @@
         .member-silhouette {
             width: 300px;
             height: 500px;
-            background: linear-gradient(to bottom, var(--member-color), rgba(var(--member-rgb), 0.3));
+            background: linear-gradient(to bottom, var(--jisoo), rgba(var(--member-rgb), 0.3));
             border-radius: 150px;
             position: relative;
             overflow: hidden;
@@ -82,7 +82,7 @@
             font-size: 3.5rem;
             font-weight: 900;
             margin-bottom: 0.5rem;
-            color: var(--member-color);
+            color: var(--jisoo);
             text-shadow: 0 0 20px rgba(var(--member-rgb), 0.5);
         }
         
@@ -95,7 +95,7 @@
         .member-position {
             display: inline-block;
             background: rgba(var(--member-rgb), 0.2);
-            color: var(--member-color);
+            color: var(--jisoo);
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
             font-weight: 600;
@@ -135,7 +135,7 @@
             color: rgba(255,255,255,0.8);
             margin-bottom: 2rem;
         }
-        
+
         .facts-section {
             background: rgba(255,255,255,0.03);
             padding: 4rem 0;
@@ -156,13 +156,13 @@
         }
         
         .fact-card:hover {
-            border-color: var(--member-color);
+            border-color: var(--jisoo);
             transform: translateY(-5px);
         }
         
         .fact-icon {
             font-size: 2rem;
-            color: var(--member-color);
+            color: var(--jisoo);
             margin-bottom: 1rem;
         }
         
@@ -176,6 +176,196 @@
             color: rgba(255,255,255,0.7);
             line-height: 1.6;
         }
+
+        .talent-section {
+            padding: 4rem 0;
+            background: rgba(255,255,255,0.03);
+        }
+        
+        .talent-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .talent-card {
+            background: rgba(var(--member-rgb), 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(var(--member-rgb), 0.1);
+            transition: var(--transition);
+        }
+        
+        .talent-card:hover {
+            border-color: var(--jisoo);
+            transform: translateY(-5px);
+        }
+        
+        .talent-icon {
+            font-size: 2.5rem;
+            color: var(--jisoo);
+            margin-bottom: 1rem;
+        }
+        
+        .talent-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .dance-section {
+            padding: 4rem 0;
+            background: rgba(255,255,255,0.03);
+        }
+        
+        .dance-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .dance-card {
+            background: rgba(var(--member-rgb), 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(var(--member-rgb), 0.1);
+            transition: var(--transition);
+        }
+        
+        .dance-card:hover {
+            border-color: var(--jisoo);
+            transform: translateY(-5px);
+        }
+        
+        .dance-icon {
+            font-size: 2.5rem;
+            color: var(--jisoo);
+            margin-bottom: 1rem;
+        }
+        
+        .dance-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .music-section {
+            padding: 4rem 0;
+            background: rgba(0,0,0,0.9);
+        }
+        
+        .solo-album {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+            background: rgba(var(--member-rgb), 0.05);;
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(var(--member-rgb), 0.1);;
+        }
+
+        .solo-album:hover {
+            border-color: var(--jisoo);
+        }
+        
+        .album-cover {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .album-cover img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .album-info h3 {
+            color: var(--jisoo);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .track-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        
+        .track-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.8);
+        }
+
+        .achievements-section {
+            padding: 4rem 0;
+            background: rgba(0,0,0,0.9);
+        }
+        
+        .achievements-list {
+            max-width: 800px;
+            margin: 2rem auto 0;
+        }
+        
+        .achievement-item {
+            background: rgba(var(--member-rgb), 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--jisoo);
+            transition: var(--transition);
+        }
+        
+        .achievement-item:hover {
+            background: rgba(var(--member-rgb), 0.1);
+            transform: translateX(10px);
+        }
+        
+        .achievement-year {
+            display: inline-block;
+            background: var(--jisoo);
+            color: var(--black);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-section {
+            padding: 4rem 0;
+            background: rgba(0,0,0,0.9);
+        }
+        
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            height: 400px;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            /*width: 100%;*/
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
         
         .hero-buttons {
             display: flex;
@@ -186,6 +376,40 @@
 
         #img-auto {
             height: auto;
+        }
+
+        .member-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--white);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255,0,102,0.1);
+            border-color: var(--jisoo);
+        }
+        
+        .nav-btn.prev i {
+            order: -1;
+        }
+        
+        .nav-btn.next i {
+            order: 1;
         }
         
         @media (max-width: 992px) {
@@ -215,7 +439,7 @@
     <header class="site-header" id="siteHeader">
         <div class="header-container">
             <div class="logo">
-                <a href="index.html">
+                <a href="home.html">
                     <span class="logo-black">BLACK</span>
                     <span class="logo-pink">PINK</span>
                     <span class="logo-sub">FAN VERSE</span>
@@ -238,6 +462,12 @@
                     <li><a href="index.html#footer"><i class="fas fa-heart"></i> ФАН-ЗОНА</a></li>
                 </ul>
             </nav>
+
+            <div class="return-to-door-header">
+                <a href="index.html" class="btn-header" title="Вернуться">
+                    <i class="fas fa-door-open"></i>
+                </a>
+            </div>
             
             <button class="menu-toggle" id="menuToggle" aria-label="Меню">
                 <span></span>
@@ -252,7 +482,7 @@
         <div class="container member-container">
             <div class="member-visual">
                 <div class="member-silhouette" id="jisooSilhouette">
-                    <img src="assets/img/jisoo.jpg" alt="Джису" class="member-portrait">
+                    <img src="assets/img/jisoo/jisoo.jpg" alt="Джису" class="member-portrait">
                 </div>
             </div>
             
@@ -284,13 +514,13 @@
                 </div>
                 
                 <div class="hero-buttons">
-                    <a href="#facts" class="btn btn-primary" style="background: linear-gradient(135deg, var(--member-color), #ff4d6d);">
+                    <a href="#facts" class="btn btn-primary" style="background: linear-gradient(135deg, var(--jisoo), #ff4d6d);">
                         <i class="fas fa-star"></i> Интересные факты
                     </a>
-                    <a href="#talent" class="btn btn-primary" style="background: linear-gradient(135deg, var(--member-color), #ff4d6d);">
+                    <a href="#talent" class="btn btn-primary" style="background: linear-gradient(135deg, var(--jisoo), #ff4d6d);">
                         <i class="fas fa-music"></i> Таланты
                     </a>
-                    <a href="#dance" class="btn btn-primary" style="background: linear-gradient(135deg, var(--member-color), #ff4d6d);">
+                    <a href="#dance" class="btn btn-primary" style="background: linear-gradient(135deg, var(--jisoo), #ff4d6d);">
                         <i class="fas fa-running"></i> Танец
                     </a>
                     <a href="#music" class="btn btn-secondary">
@@ -314,7 +544,7 @@
     <section class="facts-section" id="facts">
         <div class="container">
             <div class="section-header">
-                <h2>ИНТЕРЕСНЫЕ <span style="color: var(--member-color);">ФАКТЫ</span> О ДЖИСУ</h2>
+                <h2>ИНТЕРЕСНЫЕ <span style="color: var(--jisoo);">ФАКТЫ</span> О ДЖИСУ</h2>
                 <p>Узнайте больше о самой старшей участнице BLACKPINK</p>
             </div>
             
@@ -374,7 +604,7 @@
     <section class="talent-section" id="talent">
         <div class="container">
             <div class="section-header">
-                <h2>ТАЛАНТЫ <span style="color: var(--member-color);">ДЖИСУ</span></h2>
+                <h2>ТАЛАНТЫ <span style="color: var(--jisoo);">ДЖИСУ</span></h2>
                 <p>Уникальные способности и навыки</p>
             </div>
             
@@ -418,7 +648,7 @@
     <section class="dance-section" id="dance">
         <div class="container">
             <div class="section-header">
-                <h2>ТАНЦЕВАЛЬНЫЕ <span style="color: var(--member-color);">НАВЫКИ</span></h2>
+                <h2>ТАНЦЕВАЛЬНЫЕ <span style="color: var(--jisoo);">НАВЫКИ</span></h2>
                 <p>Элегантность и грация на сцене</p>
             </div>
             
@@ -462,13 +692,13 @@
     <section class="music-section" id="music">
         <div class="container">
             <div class="section-header">
-                <h2>СОЛЬНЫЕ <span style="color: var(--member-color);">РАБОТЫ</span></h2>
+                <h2>СОЛЬНЫЕ <span style="color: var(--jisoo);">РАБОТЫ</span></h2>
                 <p>Индивидуальное творчество Джису</p>
             </div>
             
             <div class="solo-album">
                 <div class="album-cover">
-                    <img src="assets/img/jisoo-solo.jpg" alt="ME - THE ALBUM">
+                    <img src="assets/img/jisoo/jisoo-me.jpg" alt="ME - THE ALBUM">
                 </div>
                 <div class="album-info">
                     <h3>ME (2023)</h3>
@@ -498,7 +728,7 @@
     <section class="achievements-section" id="achievements">
         <div class="container">
             <div class="section-header">
-                <h2>МИРОВЫЕ <span style="color: var(--member-color);">ДОСТИЖЕНИЯ</span></h2>
+                <h2>МИРОВЫЕ <span style="color: var(--jisoo);">ДОСТИЖЕНИЯ</span></h2>
                 <p>Рекорды и достижения Джису</p>
             </div>
             
@@ -540,34 +770,34 @@
     <section class="gallery-section" id="gallery">
         <div class="container">
             <div class="section-header">
-                <h2>ГАЛЕРЕЯ <span style="color: var(--member-color);">ДЖИСУ</span></h2>
+                <h2>ГАЛЕРЕЯ <span style="color: var(--jisoo);">ДЖИСУ</span></h2>
                 <p>Лучшие моменты и фотографии</p>
             </div>
             
             <div class="photo-gallery">
                 <div class="gallery-item">
-                    <img src="assets/img/jisoo-stage.jpg" id="img-auto" alt="Джису на сцене" loading="lazy">
+                    <img src="assets/img/jisoo/jisoo-stage.jpg" id="img-auto" alt="Джису на сцене" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/jisoo-guitar.jpg" alt="Джису в студии" loading="lazy">
+                    <img src="assets/img/jisoo/jisoo-guitar.jpg" alt="Джису в студии" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/jisoo-photosission.jpg" alt="Джису на фотосессии" loading="lazy">
+                    <img src="assets/img/jisoo/jisoo-photosission.jpg" alt="Джису на фотосессии" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/jisoo-portrait1.jpg" id="img-auto" alt="Джису на выступлении" loading="lazy">
+                    <img src="assets/img/jisoo/jisoo-portrait1.jpg" id="img-auto" alt="Джису на выступлении" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/jisoo-home.jpg" id="img-auto" alt="Джису в повседневной жизни" loading="lazy">
+                    <img src="assets/img/jisoo/jisoo-home.jpg" id="img-auto" alt="Джису в повседневной жизни" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/jisoo-red-carpet.jpg" id="img-auto" alt="Джису на красной дорожке" loading="lazy">
+                    <img src="assets/img/jisoo/jisoo-red-carpet.jpg" id="img-auto" alt="Джису на красной дорожке" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/jisoo-red.jpg" id="img-auto" alt="Джису в красном" loading="lazy">
+                    <img src="assets/img/jisoo/jisoo-red.jpg" id="img-auto" alt="Джису в красном" loading="lazy">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/jisoo1.jpg" id="img-auto" alt="Джису портрет" loading="lazy">
+                    <img src="assets/img/jisoo/jisoo1.jpg" id="img-auto" alt="Джису портрет" loading="lazy">
                 </div>
             </div>
         </div>

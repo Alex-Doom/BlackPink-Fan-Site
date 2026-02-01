@@ -12,5 +12,14 @@ blackpink-fansite/
 │
 └── assets/             (Папка с ресурсами)
     ├── img/          (все картинки)
+    |      ├── jisoo
+    |      ├── rose
+    |      ├── lisa
+    |      ├── jennie
+    |      ├── albums
+    |      ├── carousel
+    |      ├── main
     │
+    ├── audio/
+    |
     └── video

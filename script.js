@@ -160,10 +160,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!silhouetteMembers.length) return;
 
     const members = [
-        { name: 'jisoo',   color: '#ff4d6d', displayName: 'JISOO',  imageSrc: 'assets/img/jisoo-portrait.webp' },
-        { name: 'jennie', color: '#ff0066', displayName: 'JENNIE', imageSrc: 'assets/img/jennie-portrait.jpg' },
-        { name: 'rose',   color: '#ff66b2', displayName: 'ROSÉ',   imageSrc: 'assets/img/rose-portrait.jpg' },
-        { name: 'lisa',   color: '#ffcc00', displayName: 'LISA',   imageSrc: 'assets/img/lisa-portrait.jpg' }
+        { name: 'jisoo',   color: '#ff4d6d', displayName: 'JISOO',  imageSrc: 'assets/img/jisoo/jisoo-portrait.webp' },
+        { name: 'jennie', color: '#ff0066', displayName: 'JENNIE', imageSrc: 'assets/img/jennie/jennie-portrait.jpg' },
+        { name: 'rose',   color: '#ff66b2', displayName: 'ROSÉ',   imageSrc: 'assets/img/rose/rose-portrait.jpg' },
+        { name: 'lisa',   color: '#ffcc00', displayName: 'LISA',   imageSrc: 'assets/img/lisa/lisa-portrait.jpg' }
     ];
 
     let order = [0, 1, 2, 3];
