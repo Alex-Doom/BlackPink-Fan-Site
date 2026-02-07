@@ -152,6 +152,7 @@
             top: 0;
             bottom: 0;
             width: 2px;
+            opacity: 0.5;
             background: linear-gradient(to bottom, transparent, #ff0066, transparent);
             transform: translateX(-50%);
         }
@@ -526,7 +527,7 @@
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
-            height: 100px;
+            height: 90px;
             background: rgba(0,0,0,0.8);
             border-radius: 5px;
             padding: 10px;
@@ -537,45 +538,31 @@
             display: block;
         }
 
+        .video-volume-control:hover .video-volume-slider-container {
+            display: block;
+        }
+
         .video-volume-slider {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 100%;
-        height: 80px;
-        background: transparent;
-        transform: rotate(-90deg);
-        transform-origin: left top;
-        position: absolute;
-        left: 50%;
-        top: -40px;
-        cursor: pointer;
-    }
+            width: 100%;
+            height: 100px;
+            writing-mode: bt-lr;
+            /*-webkit-appearance: slider-vertical;*/
+        }
 
-    .video-volume-slider::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 16px;
-        height: 16px;
-        background: var(--pink);
-        border-radius: 50%;
-        cursor: pointer;
-        margin-top: -6px;
-        box-shadow: 0 0 10px rgba(255, 0, 102, 0.8);
-        transition: all 0.2s ease;
-    }
+        .video-volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px;
+            height: 14px;
+            background: var(--pink);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 0, 102, 0.7);
+            transition: transform 0.2s;
+        }
 
-    .video-volume-slider::-webkit-slider-thumb:hover {
-        transform: scale(1.2);
-        box-shadow: 0 0 15px rgba(255, 0, 102, 1);
-    }
-
-    .video-volume-slider::-webkit-slider-track {
-        width: 100%;
-        height: 4px;
-        background: rgba(255, 255, 255, 0.3);
-        border-radius: 2px;
-        cursor: pointer;
-    }
+        .video-volume-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
 
     /* Для Firefox */
     .video-volume-slider::-moz-range-thumb {
@@ -2453,7 +2440,7 @@
                 <!-- Видео фон -->
                 <div class="video-background">
                     <video id="forever-young-video" loop>
-                        <source src="assets/video/compressed_BlackPink.mp4" type="video/mp4">
+                        <source src="assets/video/Blackpink1.mp4" type="video/mp4">
                         Ваш браузер не поддерживает видео.
                     </video>
                 </div>
@@ -3309,7 +3296,7 @@
                 <!-- BLACKPINK ARENA TOUR 2018 -->
                 <div class="album-card" onclick="openAlbumModal('arena-tour-2018')">
                     <div class="album-cover">
-                        <img src="assets/img/albums/BLACKPINK_ARENA_TOUR_2018_"SPECIAL_FINAL_IN_KYOCERA_DOME_OSAKA".png" alt="ARENA TOUR 2018">
+                        <img src="assets/img/albums/BLACKPINK_ARENA_TOUR_2018_'SPECIAL_FINAL_IN_KYOCERA_DOME_OSAKA'.png" alt="ARENA TOUR 2018">
                     </div>
                     <div class="album-info">
                         <div class="album-title">ARENA TOUR 2018 LIVE</div>
@@ -4311,12 +4298,24 @@
             // Ползунок громкости
             if (videoVolumeSlider) {
                 videoVolumeSlider.addEventListener('input', (e) => {
-                    video.volume = e.target.value / 100;
-                    // Если звук был выключен, включаем его при изменении громкости
-                    if (video.muted && video.volume > 0) {
+                    const volume = e.target.value / 100;
+                    video.volume = volume;
+                    
+                    // Обновляем иконку в зависимости от уровня громкости
+                    if (volume === 0) {
+                        video.muted = true;
+                        videoMuteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                        videoMuteBtn.title = "Включить звук";
+                    } else {
                         video.muted = false;
-                        videoMuteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                        if (volume < 0.5) {
+                            videoMuteBtn.innerHTML = '<i class="fas fa-volume-down"></i>';
+                        } else {
+                            videoMuteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                        }
+                        videoMuteBtn.title = "Выключить звук";
                     }
+                    
                     showVideoControls();
                 });
                 
@@ -4626,7 +4625,7 @@
             year: "2016",
             duration: "3:18",
             cover: "assets/img/albums/SQUARE_TWO.png",
-            audio: "assets/audio/playing-with-fire.mp3",
+            audio: "assets/audio/SQUARE_TWO/BLACKPINK_-_PLAYING_WITH_FIRE.mp3",
             color: "#ff7675",
             
             lyrics: `Текст песни PLAYING WITH FIRE...`,
@@ -4665,7 +4664,7 @@
             year: "2016",
             duration: "3:50",
             cover: "assets/img/albums/logo.jpg",
-            audio: "assets/audio/stay.mp3",
+            audio: "assets/audio/SQUARE_TWO/BLACKPINK_-_Stay.mp3",
             color: "#74b9ff",
             
             lyrics: `Текст песни STAY...`,
@@ -4705,7 +4704,7 @@
             year: "2016",
             duration: "3:32",
             cover: "assets/img/albums/SQUARE_TWO.png",
-            audio: "assets/audio/whistle-acoustic.mp3",
+            audio: "assets/audio/SQUARE_TWO/BLACKPINK_-_WHISTLE_Acustic.mp3",
             color: "#00b894",
             
             lyrics: `Текст песни WHISTLE Acoustic...`,
@@ -4746,7 +4745,7 @@
             year: "2017",
             duration: "4:01",
             cover: "assets/img/albums/BLACKPINK.png",
-            audio: "assets/audio/boombayah-jp.mp3",
+            audio: "assets/audio/Blackpink_09.08.2017/Black_Pink_-_Boombayah_Japanese_Ver.mp3",
             color: "#ff0066",
             
             lyrics: `Текст песни BOOMBAYAH Japanese Version...`,
@@ -4786,7 +4785,7 @@
             year: "2017",
             duration: "3:32",
             cover: "assets/img/albums/BLACKPINK.png",
-            audio: "assets/audio/whistle-jp.mp3",
+            audio: "assets/audio/Blackpink_09.08.2017/BLACKPINK_-_WHISTLE_Japanese_ver.mp3",
             color: "#00b894",
             
             lyrics: `Текст песни WHISTLE Japanese Version...`,
@@ -4826,7 +4825,7 @@
             year: "2017",
             duration: "3:18",
             cover: "assets/img/albums/logo.jpg",
-            audio: "assets/audio/playing-with-fire-jp.mp3",
+            audio: "assets/audio/Blackpink_09.08.2017/BLACKPINK_-_PLAYING_WITH_FIRE_JP_ver.mp3",
             color: "#ff7675",
             
             lyrics: `Текст песни PLAYING WITH FIRE Japanese Version...`,
@@ -4866,7 +4865,7 @@
             year: "2017",
             duration: "3:50",
             cover: "assets/img/albums/BLACKPINK.png",
-            audio: "assets/audio/stay-jp.mp3",
+            audio: "assets/audio/Blackpink_09.08.2017/BLACKPINK_-_Stay_Japanese_Version.mp3",
             color: "#74b9ff",
             
             lyrics: `Текст песни STAY Japanese Version...`,
@@ -4907,7 +4906,7 @@
             year: "2017",
             duration: "3:33",
             cover: "assets/img/albums/BLACKPINK.png",
-            audio: "assets/audio/as-if-its-your-last-jp.mp3",
+            audio: "assets/audio/Blackpink_09.08.2017/BLACKPINK_-_AS_IF_ITS_YOUR_LAST_jp_ver.mp3",
             color: "#fd79a8",
             
             lyrics: `Текст песни AS IF IT'S YOUR LAST Japanese Version...`,
@@ -4947,7 +4946,7 @@
             year: "2017",
             duration: "3:32",
             cover: "assets/img/albums/BLACKPINK.png",
-            audio: "assets/audio/whistle-acoustic-jp.mp3",
+            audio: "assets/audio/Blackpink_09.08.2017/BLACKPINK_-_WHISTLE_Acoustic_Ver_Japanese.mp3",
             color: "#00b894",
             
             lyrics: `Текст песни WHISTLE Acoustic Japanese Version...`,
@@ -4989,7 +4988,7 @@
             year: "2018",
             duration: "4:01",
             cover: "assets/img/albums/Re_BLACKPINK.png",
-            audio: "assets/audio/boombayah-jp.mp3",
+            audio: "assets/audio/Blackpink_09.08.2017/Black_Pink_-_Boombayah_Japanese_Ver.mp3",
             color: "#ff0066",
             
             lyrics: `Текст песни BOOMBAYAH Japanese Version (Reissue)...`,
@@ -5028,7 +5027,7 @@
             year: "2018",
             duration: "3:32",
             cover: "assets/img/albums/Re_BLACKPINK.png",
-            audio: "assets/audio/whistle-jp.mp3",
+            audio: "assets/audio/Blackpink_09.08.2017/BLACKPINK_-_WHISTLE_Japanese_ver.mp3",
             color: "#00b894",
             
             lyrics: `Текст песни WHISTLE Japanese Version (Reissue)...`,
@@ -5067,7 +5066,7 @@
             year: "2018",
             duration: "3:18",
             cover: "assets/img/albums/Re_BLACKPINK.png",
-            audio: "assets/audio/playing-with-fire-jp.mp3",
+            audio: "assets/audio/Blackpink_09.08.2017/BLACKPINK_-_PLAYING_WITH_FIRE_JP_ver.mp3",
             color: "#ff7675",
             
             lyrics: `Текст песни PLAYING WITH FIRE Japanese Version (Reissue)...`,
@@ -5106,7 +5105,7 @@
             year: "2018",
             duration: "3:50",
             cover: "assets/img/albums/Re_BLACKPINK.png",
-            audio: "assets/audio/stay-jp.mp3",
+            audio: "assets/audio/Blackpink_09.08.2017/BLACKPINK_-_Stay_Japanese_Version.mp3",
             color: "#74b9ff",
             
             lyrics: `Текст песни STAY Japanese Version (Reissue)...`,
@@ -5146,7 +5145,7 @@
             year: "2018",
             duration: "3:33",
             cover: "assets/img/albums/Re_BLACKPINK.png",
-            audio: "assets/audio/as-if-its-your-last-jp.mp3",
+            audio: "assets/audio/Blackpink_09.08.2017/BLACKPINK_-_AS_IF_ITS_YOUR_LAST_jp_ver.mp3",
             color: "#fd79a8",
             
             lyrics: `Текст песни AS IF IT'S YOUR LAST Japanese Version (Reissue)...`,
@@ -5185,7 +5184,7 @@
             year: "2018",
             duration: "3:32",
             cover: "assets/img/albums/Re_BLACKPINK.png",
-            audio: "assets/audio/whistle-acoustic-jp.mp3",
+            audio: "assets/audio/Blackpink_09.08.2017/BLACKPINK_-_WHISTLE_Acoustic_Ver_Japanese.mp3",
             color: "#00b894",
             
             lyrics: `Текст песни WHISTLE Acoustic Japanese Version (Reissue)...`,
@@ -5226,7 +5225,7 @@
             year: "2018",
             duration: "3:29",
             cover: "assets/img/albums/SQUARE_UP.png",
-            audio: "assets/audio/ddu-du-ddu-du.mp3",
+            audio: "assets/audio/SQUARE_UP/Blackpink_-_DDU-DU_DDU-DU.mp3",
             color: "#ff0066",
             
             lyrics: `Текст песни DDU-DU DDU-DU...`,
@@ -5267,7 +5266,7 @@
             year: "2018",
             duration: "3:57",
             cover: "assets/img/albums/SQUARE_UP.png",
-            audio: "assets/audio/forever-young.mp3",
+            audio: "assets/audio/SQUARE_UP/Blackpink_-_Forever_Young.mp3",
             color: "#ffeaa7",
             
             lyrics: `Текст песни Forever Young...`,
@@ -5307,7 +5306,7 @@
             year: "2018",
             duration: "3:17",
             cover: "assets/img/albums/SQUARE_UP.png",
-            audio: "assets/audio/really.mp3",
+            audio: "assets/audio/SQUARE_UP/Blackpink_-_Really.mp3",
             color: "#a29bfe",
             
             lyrics: `Текст песни Really...`,
@@ -5348,7 +5347,7 @@
             year: "2018",
             duration: "3:18",
             cover: "assets/img/albums/SQUARE_UP.png",
-            audio: "assets/audio/see-u-later.mp3",
+            audio: "assets/audio/SQUARE_UP/Blackpink_-_See_U_Later.mp3",
             color: "#636e72",
             
             lyrics: `Текст песни See U Later...`,
@@ -5389,7 +5388,7 @@
             year: "2018",
             duration: "3:33",
             cover: "assets/img/albums/SQUARE_UP.png",
-            audio: "assets/audio/as-if-its-your-last.mp3",
+            audio: "assets/audio/SQUARE_UP/BLACKPINK_-_AS_IF_ITS_YOUR_LAST.mp3",
             color: "#fd79a8",
             
             lyrics: `Текст песни AS IF IT'S YOUR LAST...`,
@@ -5430,7 +5429,7 @@
             year: "2018",
             duration: "3:29",
             cover: "assets/img/albums/DDU-DU DDU-DU(JP_Ver.).png",
-            audio: "assets/audio/ddu-du-ddu-du-jp.mp3",
+            audio: "assets/audio/DDU-DU DDU-DU_(JP_Ver.)/BLACKPINK_-_DDU-DU_DDU-DU_JP_Ver.mp3",
             color: "#ff0066",
             
             lyrics: `Текст песни DDU-DU DDU-DU Japanese Version...`,
@@ -5472,7 +5471,7 @@
             year: "2018",
             duration: "3:29",
             cover: "assets/img/albums/DDU-DU DDU-DU(JP_Ver.).png",
-            audio: "assets/audio/ddu-du-ddu-du.mp3",
+            audio: "assets/audio/DDU-DU DDU-DU_(JP_Ver.)/Blackpink_-_DDU-DU_DDU-DU.mp3",
             color: "#ff0066",
             
             lyrics: `Текст песни DDU-DU DDU-DU Original...`,
@@ -5511,7 +5510,7 @@
             year: "2018",
             duration: "3:57",
             cover: "assets/img/albums/DDU-DU DDU-DU(JP_Ver.).png",
-            audio: "assets/audio/forever-young.mp3",
+            audio: "assets/audio/DDU-DU DDU-DU_(JP_Ver.)/Blackpink_-_Forever_Young_61890223.mp3",
             color: "#ffeaa7",
             
             lyrics: `Текст песни Forever Young...`,
@@ -5550,7 +5549,7 @@
             year: "2018",
             duration: "3:17",
             cover: "assets/img/albums/DDU-DU DDU-DU(JP_Ver.).png",
-            audio: "assets/audio/really.mp3",
+            audio: "assets/audio/DDU-DU DDU-DU_(JP_Ver.)/Blackpink_-_Really.mp3",
             color: "#a29bfe",
             
             lyrics: `Текст песни Really...`,
@@ -5589,7 +5588,7 @@
             year: "2018",
             duration: "3:18",
             cover: "assets/img/albums/DDU-DU DDU-DU(JP_Ver.).png",
-            audio: "assets/audio/see-u-later.mp3",
+            audio: "assets/audio/DDU-DU DDU-DU_(JP_Ver.)/Blackpink_-_See_U_Later.mp3",
             color: "#636e72",
             
             lyrics: `Текст песни See U Later...`,
@@ -5630,7 +5629,7 @@
             year: "2018",
             duration: "4:01",
             cover: "assets/img/albums/BLACKPINK_IN_YOUR_AREA.png",
-            audio: "assets/audio/boombayah-jp.mp3",
+            audio: "assets/audio/BLACKPINK_IN_YOUR_AREA/Black_Pink_-_Boombayah_Japanese_Ver.mp3",
             color: "#ff0066",
             
             lyrics: `Текст песни BOOMBAYAH Japanese Version...`,
@@ -5669,7 +5668,7 @@
             year: "2018",
             duration: "3:32",
             cover: "assets/img/albums/BLACKPINK_IN_YOUR_AREA.png",
-            audio: "assets/audio/whistle-jp.mp3",
+            audio: "assets/audio/BLACKPINK_IN_YOUR_AREA/BLACKPINK_-_WHISTLE_Japanese_version.mp3",
             color: "#00b894",
             
             lyrics: `Текст песни WHISTLE Japanese Version...`,
@@ -5708,7 +5707,7 @@
             year: "2018",
             duration: "3:18",
             cover: "assets/img/albums/BLACKPINK_IN_YOUR_AREA.png",
-            audio: "assets/audio/playing-with-fire-jp.mp3",
+            audio: "assets/audio/BLACKPINK_IN_YOUR_AREA/BLACKPINK_-_PLAYING_WITH_FIRE_JP_ver.mp3",
             color: "#ff7675",
             
             lyrics: `Текст песни PLAYING WITH FIRE Japanese Version...`,
@@ -5747,7 +5746,7 @@
             year: "2018",
             duration: "3:50",
             cover: "assets/img/albums/BLACKPINK_IN_YOUR_AREA.png",
-            audio: "assets/audio/stay-jp.mp3",
+            audio: "assets/audio/BLACKPINK_IN_YOUR_AREA/BLACKPINK_-_Stay_Japanese_Version.mp3",
             color: "#74b9ff",
             
             lyrics: `Текст песни STAY Japanese Version...`,
@@ -5787,7 +5786,7 @@
             year: "2018",
             duration: "3:33",
             cover: "assets/img/albums/BLACKPINK_IN_YOUR_AREA.png",
-            audio: "assets/audio/as-if-its-your-last-jp.mp3",
+            audio: "assets/audio/BLACKPINK_IN_YOUR_AREA/BLACKPINK_-_AS_IF_ITS_YOUR_LAST_jp_version.mp3",
             color: "#fd79a8",
             
             lyrics: `Текст песни AS IF IT'S YOUR LAST Japanese Version...`,
@@ -5826,7 +5825,7 @@
             year: "2018",
             duration: "3:29",
             cover: "assets/img/albums/BLACKPINK_IN_YOUR_AREA.png",
-            audio: "assets/audio/ddu-du-ddu-du-jp.mp3",
+            audio: "assets/audio/BLACKPINK_IN_YOUR_AREA/BLACKPINK_-_DDU-DU_DDU-DU_JP_Ver.mp3",
             color: "#ff0066",
             
             lyrics: `Текст песни DDU-DU DDU-DU Japanese Version...`,
@@ -5866,7 +5865,7 @@
             year: "2018",
             duration: "3:57",
             cover: "assets/img/albums/BLACKPINK_IN_YOUR_AREA.png",
-            audio: "assets/audio/forever-young-jp.mp3",
+            audio: "assets/audio/BLACKPINK_IN_YOUR_AREA/BLACKPINK_-_FOREVER_YOUNG_Extended_Version_JP_Ver.mp3",
             color: "#ffeaa7",
             
             lyrics: `Текст песни FOREVER YOUNG Japanese Version...`,
@@ -5906,7 +5905,7 @@
             year: "2019",
             duration: "4:15",
             cover: "assets/img/albums/BLACKPINK_ARENA_TOUR_2018.png",
-            audio: "assets/audio/ddu-du-ddu-du-live.mp3",
+            audio: "assets/audio/BLACKPINK ARENA TOUR 2018 “SPECIAL FINAL IN KYOCERA DOME OSAKA“/BLACKPINK_-_DDU-DU_DDU-DU.mp3",
             color: "#ff0066",
             
             lyrics: `Текст песни DDU-DU DDU-DU Live...`,
@@ -5946,7 +5945,7 @@
             year: "2019",
             duration: "4:30",
             cover: "assets/img/albums/BLACKPINK_ARENA_TOUR_2018.png",
-            audio: "assets/audio/forever-young-live.mp3",
+            audio: "assets/audio/BLACKPINK ARENA TOUR 2018 “SPECIAL FINAL IN KYOCERA DOME OSAKA“/FOREVER_YOUNG__BLACKPINK.mp3",
             color: "#ffeaa7",
             
             lyrics: `Текст песни FOREVER YOUNG Live...`,
@@ -5986,7 +5985,7 @@
             year: "2019",
             duration: "3:45",
             cover: "assets/img/albums/BLACKPINK_ARENA_TOUR_2018.png",
-            audio: "assets/audio/whistle-acoustic-live.mp3",
+            audio: "assets/audio/BLACKPINK ARENA TOUR 2018 “SPECIAL FINAL IN KYOCERA DOME OSAKA“/BLACKPINK_-_WHISTLE__REMIX.mp3",
             color: "#00b894",
             
             lyrics: `Текст песни WHISTLE Acoustic Live...`,
@@ -6026,7 +6025,7 @@
             year: "2019",
             duration: "4:10",
             cover: "assets/img/albums/BLACKPINK_ARENA_TOUR_2018.png",
-            audio: "assets/audio/stay-live.mp3",
+            audio: "assets/audio/BLACKPINK ARENA TOUR 2018 “SPECIAL FINAL IN KYOCERA DOME OSAKA“/BLACKPINK_-_STAY.mp3",
             color: "#74b9ff",
             
             lyrics: `Текст песни STAY Live...`,
@@ -6066,7 +6065,7 @@
             year: "2019",
             duration: "5:20",
             cover: "assets/img/albums/BLACKPINK_ARENA_TOUR_2018.png",
-            audio: "assets/audio/let-it-be-rose-live.mp3",
+            audio: "assets/audio/BLACKPINK ARENA TOUR 2018 “SPECIAL FINAL IN KYOCERA DOME OSAKA“/Rose_-_let_it_be_you_i_only_look_at_me.mp3",
             color: "#ff66b2",
             
             lyrics: `Текст песни Let It Be Medley Live...`,
@@ -6105,7 +6104,7 @@
             year: "2019",
             duration: "4:45",
             cover: "assets/img/albums/BLACKPINK_ARENA_TOUR_2018.png",
-            audio: "assets/audio/yukino-hana-live.mp3",
+            audio: "assets/audio/BLACKPINK ARENA TOUR 2018 “SPECIAL FINAL IN KYOCERA DOME OSAKA“/BLACKPINK_-_雪の華___JISOO__LIVE.mp3",
             color: "#ff4d6d",
             
             lyrics: `Текст песни Yukino Hana Live...`,
@@ -6144,7 +6143,7 @@
             year: "2019",
             duration: "3:20",
             cover: "assets/img/albums/BLACKPINK_ARENA_TOUR_2018.png",
-            audio: "assets/audio/solo-live.mp3",
+            audio: "assets/audio/BLACKPINK ARENA TOUR 2018 “SPECIAL FINAL IN KYOCERA DOME OSAKA“/JENNIE__from_BLACKPINK__-_SOLO.mp3",
             color: "#ff0066",
             
             lyrics: `Текст песни SOLO Live...`,
@@ -6184,7 +6183,7 @@
             year: "2019",
             duration: "3:11",
             cover: "assets/img/albums/kill-this-love.webp",
-            audio: "assets/audio/kill-this-love.mp3",
+            audio: "assets/audio/Kill-this-love/BLACKPINK_-_Kill_This_Love.mp3",
             color: "#9b59b6",
             
             lyrics: `Текст песни Kill This Love...`,
@@ -6225,7 +6224,7 @@
             year: "2019",
             duration: "3:21",
             cover: "assets/img/albums/kill-this-love.webp",
-            audio: "assets/audio/dont-know-what-to-do.mp3",
+            audio: "assets/audio/Kill-this-love/BLACKPINK_-_Dont_Know_What_To_Do.mp3",
             color: "#3498db",
             
             lyrics: `Текст песни Don't Know What To Do...`,
@@ -6265,7 +6264,7 @@
             year: "2019",
             duration: "3:11",
             cover: "assets/img/albums/kill-this-love.webp",
-            audio: "assets/audio/kick-it.mp3",
+            audio: "assets/audio/Kill-this-love/BLACKPINK_-_Kick_It.mp3",
             color: "#e74c3c",
             
             lyrics: `Текст песни Kick It...`,
@@ -6306,7 +6305,7 @@
             year: "2019",
             duration: "3:12",
             cover: "assets/img/albums/kill-this-love.webp",
-            audio: "assets/audio/hope-not.mp3",
+            audio: "assets/audio/Kill-this-love/BLACKPINK_-_Hope_Not.mp3",
             color: "#1abc9c",
             
             lyrics: `Текст песни Hope Not...`,
@@ -6348,7 +6347,7 @@
             year: "2019",
             duration: "3:21",
             cover: "assets/img/albums/kill-this-love.webp",
-            audio: "assets/audio/ddu-du-ddu-du-remix.mp3",
+            audio: "assets/audio/Kill-this-love/BLACKPINK_-_DDU-DU_DDU-DU.mp3",
             color: "#ff0066",
             
             lyrics: `Текст песни DDU-DU DDU-DU Remix...`,
@@ -6389,7 +6388,7 @@
             year: "2019",
             duration: "4:20",
             cover: "assets/img/albums/BLACKPINK_2018_TOUR_IN_YOUR_AREA_SEOUL(Live).png",
-            audio: "assets/audio/ddu-du-ddu-du-live-seoul.mp3",
+            audio: "assets/audio/BLACKPINK 2018 TOUR 'IN YOUR AREA' SEOUL (Live)/BLACKPINK_-_DDU-DU_DDU-DU.mp3",
             color: "#ff0066",
             
             lyrics: `Текст песни DDU-DU DDU-DU Live Seoul...`,
@@ -6429,7 +6428,7 @@
             year: "2019",
             duration: "4:35",
             cover: "assets/img/albums/BLACKPINK_2018_TOUR_IN_YOUR_AREA_SEOUL(Live).png",
-            audio: "assets/audio/forever-young-live-seoul.mp3",
+            audio: "assets/audio/BLACKPINK 2018 TOUR 'IN YOUR AREA' SEOUL (Live)/BLACKPINK_-_Forever_Young.mp3",
             color: "#ffeaa7",
             
             lyrics: `Текст песни Forever Young Live Seoul...`,
@@ -6468,7 +6467,7 @@
             year: "2019",
             duration: "4:05",
             cover: "assets/img/albums/BLACKPINK_2018_TOUR_IN_YOUR_AREA_SEOUL(Live).png",
-            audio: "assets/audio/stay-remix-live.mp3",
+            audio: "assets/audio/BLACKPINK 2018 TOUR 'IN YOUR AREA' SEOUL (Live)/BLACKPINK_-_STAY_66381273.mp3",
             color: "#74b9ff",
             
             lyrics: `Текст песни STAY Remix Live...`,
@@ -6507,7 +6506,7 @@
             year: "2019",
             duration: "3:45",
             cover: "assets/img/albums/BLACKPINK_2018_TOUR_IN_YOUR_AREA_SEOUL(Live).png",
-            audio: "assets/audio/whistle-live-seoul.mp3",
+            audio: "assets/audio/BLACKPINK 2018 TOUR 'IN YOUR AREA' SEOUL (Live)/BLACKPINK_-_WHISTLE.mp3",
             color: "#00b894",
             
             lyrics: `Текст песни WHISTLE Live Seoul...`,
@@ -6546,7 +6545,7 @@
             year: "2019",
             duration: "5:15",
             cover: "assets/img/albums/BLACKPINK_2018_TOUR_IN_YOUR_AREA_SEOUL(Live).png",
-            audio: "assets/audio/you-i-only-look-at-me-live.mp3",
+            audio: "assets/audio/BLACKPINK 2018 TOUR 'IN YOUR AREA' SEOUL (Live)/BLACKPINK_-_YOU_I_ONLY_LOOK_AT_ME.mp3",
             color: "#ff66b2",
             
             lyrics: `Текст песни YOU & I + ONLY LOOK AT ME Live...`,
@@ -6585,7 +6584,7 @@
             year: "2019",
             duration: "3:25",
             cover: "assets/img/albums/BLACKPINK_2018_TOUR_IN_YOUR_AREA_SEOUL(Live).png",
-            audio: "assets/audio/solo-live-seoul.mp3",
+            audio: "assets/audio/BLACKPINK 2018 TOUR 'IN YOUR AREA' SEOUL (Live)/BLACKPINK_-_SOLO.mp3",
             color: "#ff0066",
             
             lyrics: `Текст песни SOLO Live Seoul...`,
@@ -6624,7 +6623,7 @@
             year: "2019",
             duration: "3:35",
             cover: "assets/img/albums/BLACKPINK_2018_TOUR_IN_YOUR_AREA_SEOUL(Live).png",
-            audio: "assets/audio/really-reggae-live.mp3",
+            audio: "assets/audio/BLACKPINK 2018 TOUR 'IN YOUR AREA' SEOUL (Live)/BLACKPINK_-_Really.mp3",
             color: "#a29bfe",
             
             lyrics: `Текст песни Really Reggae Version Live...`,
@@ -6664,7 +6663,7 @@
             year: "2019",
             duration: "3:11",
             cover: "assets/img/albums/Kill_This_Love_(Japan_Version).png",
-            audio: "assets/audio/kill-this-love-jp.mp3",
+            audio: "assets/audio/Kill-this-love_(Jp.Ver)/BLACKPINK_-_Kill_This_Love_-_Japanese_Version.mp3",
             color: "#9b59b6",
             
             lyrics: `Текст песни Kill This Love Japanese Version...`,
@@ -6705,7 +6704,7 @@
             year: "2019",
             duration: "3:21",
             cover: "assets/img/albums/Kill_This_Love_(Japan_Version).png",
-            audio: "assets/audio/dont-know-what-to-do-jp.mp3",
+            audio: "assets/audio/Kill-this-love_(Jp.Ver)/BLACKPINK_-_Dont_Know_What_To_Do_-_Japanese_Version.mp3",
             color: "#3498db",
             
             lyrics: `Текст песни Don't Know What To Do Japanese Version...`,
@@ -6745,7 +6744,7 @@
             year: "2019",
             duration: "3:11",
             cover: "assets/img/albums/Kill_This_Love_(Japan_Version).png",
-            audio: "assets/audio/kick-it-jp.mp3",
+            audio: "assets/audio/Kill-this-love_(Jp.Ver)/BLACKPINK_-_Kick_It_Japan_Version_79859034.mp3",
             color: "#e74c3c",
             
             lyrics: `Текст песни Kick It Japanese Version...`,
@@ -6786,7 +6785,7 @@
             year: "2019",
             duration: "3:12",
             cover: "assets/img/albums/Kill_This_Love_(Japan_Version).png",
-            audio: "assets/audio/hope-not-jp.mp3",
+            audio: "assets/audio/Kill-this-love_(Jp.Ver)/BLACKPINK_-_Hope_Not_Japan_Version.mp3",
             color: "#1abc9c",
             
             lyrics: `Текст песни Hope Not Japanese Version...`,
@@ -6827,7 +6826,7 @@
             year: "2019",
             duration: "3:21",
             cover: "assets/img/albums/Kill_This_Love_(Japan_Version).png",
-            audio: "assets/audio/ddu-du-ddu-du-remix-jp.mp3",
+            audio: "assets/audio/Kill-this-love_(Jp.Ver)/BLACKPINK_-_DDU-DU_DDU-DU_JP_Ver.mp3",
             color: "#ff0066",
             
             lyrics: `Текст песни DDU-DU DDU-DU Remix Japanese Version...`,
@@ -6868,7 +6867,7 @@
             year: "2020",
             duration: "4:25",
             cover: "assets/img/albums/BLACKPINK_2019-2020_WORLD_TOUR_IN_YOUR_AREA-TOKYO_DOME(Live).png",
-            audio: "assets/audio/ddu-du-ddu-du-tokyo-live.mp3",
+            audio: "assets/audio/BLACKPINK 2019-2020 WORLD TOUR IN YOUR AREA - TOKYO DOME (Live)/BLACKPINK_-_DDU-DU_DDU-DU.mp3",
             color: "#ff0066",
             
             lyrics: `Текст песни DDU-DU DDU-DU Tokyo Dome Live...`,
@@ -6909,7 +6908,7 @@
             year: "2020",
             duration: "4:40",
             cover: "assets/img/albums/BLACKPINK_2019-2020_WORLD_TOUR_IN_YOUR_AREA-TOKYO_DOME(Live).png",
-            audio: "assets/audio/forever-young-tokyo-live.mp3",
+            audio: "assets/audio/BLACKPINK 2019-2020 WORLD TOUR IN YOUR AREA - TOKYO DOME (Live)/BLACKPINK_-_Forever_Young.mp3",
             color: "#ffeaa7",
             
             lyrics: `Текст песни Forever Young Tokyo Dome Live...`,
@@ -6949,7 +6948,7 @@
             year: "2020",
             duration: "4:15",
             cover: "assets/img/albums/BLACKPINK_2019-2020_WORLD_TOUR_IN_YOUR_AREA-TOKYO_DOME(Live).png",
-            audio: "assets/audio/stay-remix-tokyo-live.mp3",
+            audio: "assets/audio/BLACKPINK 2019-2020 WORLD TOUR IN YOUR AREA - TOKYO DOME (Live)/BLACKPINK_-_Stay.mp3",
             color: "#74b9ff",
             
             lyrics: `Текст песни STAY Remix Tokyo Dome Live...`,
@@ -6989,7 +6988,7 @@
             year: "2020",
             duration: "3:50",
             cover: "assets/img/albums/BLACKPINK_2019-2020_WORLD_TOUR_IN_YOUR_AREA-TOKYO_DOME(Live).png",
-            audio: "assets/audio/whistle-tokyo-live.mp3",
+            audio: "assets/audio/BLACKPINK 2019-2020 WORLD TOUR IN YOUR AREA - TOKYO DOME (Live)/",
             color: "#00b894",
             
             lyrics: `Текст песни WHISTLE Tokyo Dome Live...`,
@@ -7029,7 +7028,7 @@
             year: "2020",
             duration: "3:25",
             cover: "assets/img/albums/BLACKPINK_2019-2020_WORLD_TOUR_IN_YOUR_AREA-TOKYO_DOME(Live).png",
-            audio: "assets/audio/kill-this-love-tokyo-live.mp3",
+            audio: "assets/audio/BLACKPINK 2019-2020 WORLD TOUR IN YOUR AREA - TOKYO DOME (Live)/",
             color: "#9b59b6",
             
             lyrics: `Текст песни Kill This Love Tokyo Dome Live...`,
@@ -7069,7 +7068,7 @@
             year: "2020",
             duration: "3:35",
             cover: "assets/img/albums/BLACKPINK_2019-2020_WORLD_TOUR_IN_YOUR_AREA-TOKYO_DOME(Live).png",
-            audio: "assets/audio/dont-know-what-to-do-tokyo-live.mp3",
+            audio: "assets/audio/BLACKPINK 2019-2020 WORLD TOUR IN YOUR AREA - TOKYO DOME (Live)/",
             color: "#3498db",
             
             lyrics: `Текст песни Don't Know What To Do Tokyo Dome Live...`,
@@ -7110,7 +7109,7 @@
             year: "2020",
             duration: "3:02",
             cover: "assets/img/albums/How_You_Like_That-CD_Single.png",
-            audio: "assets/audio/how-you-like-that.mp3",
+            audio: "assets/audio/How_you_like_that/BLACKPINK_-_How_You_Like_That.mp3",
             color: "#8e44ad",
             
             lyrics: `Текст песни How You Like That...`,
@@ -7152,7 +7151,7 @@
             year: "2020",
             duration: "3:02",
             cover: "assets/img/albums/How_You_Like_That-CD_Single.png",
-            audio: "assets/audio/how-you-like-that-instrumental.mp3",
+            audio: "assets/audio/How_you_like_that/BLACKPINK_-_How_You_Like_That_Instrumental.mp3",
             color: "#8e44ad",
             
             lyrics: `[Инструментальная версия]`,
@@ -7192,7 +7191,7 @@
             year: "2020",
             duration: "3:02",
             cover: "assets/img/albums/the_album.jpg",
-            audio: "assets/audio/how-you-like-that.mp3",
+            audio: "assets/audio/The_Album/BLACKPINK_-_How_You_Like_That.mp3",
             color: "#8e44ad",
             
             lyrics: `Текст песни How You Like That...`,
@@ -7232,7 +7231,7 @@
             year: "2020",
             duration: "2:57",
             cover: "assets/img/albums/the_album.jpg",
-            audio: "assets/audio/ice-cream.mp3",
+            audio: "assets/audio/The_Album/BLACKPINK_Selena_Gomez_-_Ice_Cream.mp3",
             color: "#f1c40f",
             
             lyrics: `Текст песни Ice Cream...`,
@@ -7272,7 +7271,7 @@
             year: "2020",
             duration: "3:21",
             cover: "assets/img/albums/the_album.jpg",
-            audio: "assets/audio/pretty-savage.mp3",
+            audio: "assets/audio/The_Album/BLACKPINK_-_Pretty_Savage.mp3",
             color: "#e74c3c",
             
             lyrics: `Текст песни Pretty Savage...`,
@@ -7312,7 +7311,7 @@
             year: "2020",
             duration: "2:41",
             cover: "assets/img/albums/the_album.jpg",
-            audio: "assets/audio/bet-you-wanna.mp3",
+            audio: "assets/audio/The_Album/BLACKPINK_Cardi_B_-_Bet_You_Wanna.mp3",
             color: "#9b59b6",
             
             lyrics: `Текст песни Bet You Wanna...`,
@@ -7352,7 +7351,7 @@
             year: "2020",
             duration: "3:12",
             cover: "assets/img/albums/the_album.jpg",
-            audio: "assets/audio/lovesick-girls.mp3",
+            audio: "assets/audio/The_Album/BLACKPINK_-_Lovesick_Girls.mp3",
             color: "#e84393",
             
             lyrics: `Текст песни Lovesick Girls...`,
@@ -7394,7 +7393,7 @@
             year: "2020",
             duration: "2:41",
             cover: "assets/img/albums/the_album.jpg",
-            audio: "assets/audio/crazy-over-you.mp3",
+            audio: "assets/audio/The_Album/BLACKPINK_-_Crazy_Over_You.mp3",
             color: "#3498db",
             
             lyrics: `Текст песни Crazy Over You...`,
@@ -7434,7 +7433,7 @@
             year: "2020",
             duration: "2:51",
             cover: "assets/img/albums/the_album.jpg",
-            audio: "assets/audio/love-to-hate-me.mp3",
+            audio: "assets/audio/The_Album/BLACKPINK_-_Love_To_Hate_Me.mp3",
             color: "#2c3e50",
             
             lyrics: `Текст песни Love To Hate Me...`,
@@ -7473,7 +7472,7 @@
             year: "2020",
             duration: "3:49",
             cover: "assets/img/albums/the_album.jpg",
-            audio: "assets/audio/you-never-know.mp3",
+            audio: "assets/audio/The_Album/BLACKPINK_-_You_Never_Know.mp3",
             color: "#7f8c8d",
             
             lyrics: `Текст песни You Never Know...`,
@@ -7515,7 +7514,7 @@
             year: "2021",
             duration: "3:25",
             cover: "assets/img/albums/BLACKPINK_2021_THE_SHOW_LIVE.png",
-            audio: "assets/audio/kill-this-love-theshow-live.mp3",
+            audio: "assets/audio/BLACKPINK 2021 'THE SHOW' LIVE/",
             color: "#9b59b6",
             
             lyrics: `Текст песни Kill This Love The Show Live...`,
@@ -7556,7 +7555,7 @@
             year: "2021",
             duration: "2:45",
             cover: "assets/img/albums/BLACKPINK_2021_THE_SHOW_LIVE.png",
-            audio: "assets/audio/crazy-over-you-theshow-live.mp3",
+            audio: "assets/audio/BLACKPINK 2021 'THE SHOW' LIVE/BLACKPINK — Crazy Over You 2021 'THE SHOW' LIVE.mp3",
             color: "#3498db",
             
             lyrics: `Текст песни Crazy Over You The Show Live...`,
@@ -7596,7 +7595,7 @@
             year: "2021",
             duration: "3:15",
             cover: "assets/img/albums/BLACKPINK_2021_THE_SHOW_LIVE.png",
-            audio: "assets/audio/how-you-like-that-theshow-live.mp3",
+            audio: "assets/audio/BLACKPINK 2021 'THE SHOW' LIVE/BLACKPINK — How You Like That 2021 'THE SHOW' LIVE.mp3",
             color: "#8e44ad",
             
             lyrics: `Текст песни How You Like That The Show Live...`,
@@ -7636,7 +7635,7 @@
             year: "2021",
             duration: "3:35",
             cover: "assets/img/albums/BLACKPINK_2021_THE_SHOW_LIVE.png",
-            audio: "assets/audio/dont-know-what-to-do-theshow-live.mp3",
+            audio: "assets/audio/BLACKPINK 2021 'THE SHOW' LIVE/BLACKPINK — Don't Know What to Do 2021 'THE SHOW' LIVE.mp3",
             color: "#3498db",
             
             lyrics: `Текст песни Don't Know What To Do The Show Live...`,
@@ -7675,7 +7674,7 @@
             year: "2021",
             duration: "3:25",
             cover: "assets/img/albums/BLACKPINK_2021_THE_SHOW_LIVE.png",
-            audio: "assets/audio/playing-with-fire-theshow-live.mp3",
+            audio: "assets/audio/BLACKPINK 2021 'THE SHOW' LIVE/BLACKPINK — Playing With Fire 2021 'THE SHOW' LIVE.mp3",
             color: "#ff7675",
             
             lyrics: `Текст песни Playing With Fire The Show Live...`,
@@ -7714,7 +7713,7 @@
             year: "2021",
             duration: "3:25",
             cover: "assets/img/albums/BLACKPINK_2021_THE_SHOW_LIVE.png",
-            audio: "assets/audio/lovesick-girls-theshow-live.mp3",
+            audio: "assets/audio/BLACKPINK 2021 'THE SHOW' LIVE/BLACKPINK — Lovesick Girls 2021 'THE SHOW' LIVE.mp3",
             color: "#e84393",
             
             lyrics: `Текст песни Lovesick Girls The Show Live...`,
@@ -7755,7 +7754,7 @@
             year: "2021",
             duration: "3:02",
             cover: "assets/img/albums/THE_ALBUM_(JP_Ver.).png",
-            audio: "assets/audio/how-you-like-that-jp.mp3",
+            audio: "assets/audio/THE ALBUM (JP Ver.)/BLACKPINK_-_How_You_Like_That_Japanese_ver.mp3",
             color: "#8e44ad",
             
             lyrics: `Текст песни How You Like That Japanese Version...`,
@@ -7796,7 +7795,7 @@
             year: "2021",
             duration: "2:57",
             cover: "assets/img/albums/THE_ALBUM_(JP_Ver.).png",
-            audio: "assets/audio/ice-cream.mp3",
+            audio: "assets/audio/THE ALBUM (JP Ver.)/BLACKPINK_Selena_Gomez_-_Ice_Cream.mp3",
             color: "#f1c40f",
             
             lyrics: `Текст песни Ice Cream...`,
@@ -7834,7 +7833,7 @@
             year: "2021",
             duration: "3:21",
             cover: "assets/img/albums/THE_ALBUM_(JP_Ver.).png",
-            audio: "assets/audio/pretty-savage-jp.mp3",
+            audio: "assets/audio/THE ALBUM (JP Ver.)/BLACKPINK — Pretty Savage (Japanese_ver.).mp3",
             color: "#e74c3c",
             
             lyrics: `Текст песни Pretty Savage Japanese Version...`,
@@ -7873,7 +7872,7 @@
             year: "2021",
             duration: "2:41",
             cover: "assets/img/albums/THE_ALBUM_(JP_Ver.).png",
-            audio: "assets/audio/bet-you-wanna.mp3",
+            audio: "assets/audio/THE ALBUM (JP Ver.)/BLACKPINK_Cardi_B_-_Bet_You_Wanna.mp3",
             color: "#9b59b6",
             
             lyrics: `Текст песни Bet You Wanna...`,
@@ -7911,7 +7910,7 @@
             year: "2021",
             duration: "3:12",
             cover: "assets/img/albums/THE_ALBUM_(JP_Ver.).png",
-            audio: "assets/audio/lovesick-girls-jp.mp3",
+            audio: "assets/audio/THE ALBUM (JP Ver.)/BLACKPINK — Lovesick Girls(Japan_ver.).mp3",
             color: "#e84393",
             
             lyrics: `Текст песни Lovesick Girls Japanese Version...`,
@@ -7950,7 +7949,7 @@
             year: "2021",
             duration: "2:41",
             cover: "assets/img/albums/THE_ALBUM_(JP_Ver.).png",
-            audio: "assets/audio/crazy-over-you.mp3",
+            audio: "assets/audio/THE ALBUM (JP Ver.)/BLACKPINK_-_Crazy_Over_You.mp3",
             color: "#3498db",
             
             lyrics: `Текст песни Crazy Over You...`,
@@ -7988,7 +7987,7 @@
             year: "2021",
             duration: "2:51",
             cover: "assets/img/albums/THE_ALBUM_(JP_Ver.).png",
-            audio: "assets/audio/love-to-hate-me.mp3",
+            audio: "assets/audio/THE ALBUM (JP Ver.)/BLACKPINK_-_Love_To_Hate_Me.mp3",
             color: "#2c3e50",
             
             lyrics: `Текст песни Love To Hate Me...`,
@@ -8025,7 +8024,7 @@
             year: "2021",
             duration: "3:49",
             cover: "assets/img/albums/THE_ALBUM_(JP_Ver.).png",
-            audio: "assets/audio/you-never-know-jp.mp3",
+            audio: "assets/audio/THE ALBUM (JP Ver.)/BLACKPINK — You Never Know (Japanese ver.).mp3",
             color: "#7f8c8d",
             
             lyrics: `Текст песни You Never Know Japanese Version...`,

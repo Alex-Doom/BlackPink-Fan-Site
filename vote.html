@@ -14,6 +14,11 @@
     <style>
         /* Основные стили */
         :root {
+            --jennie: #ff0066;
+            --jisoo: #ff4d6d;
+            --rose: #ff66b2;
+            --lisa: #ffcc00;
+
             --pink: #ff0066;
             --yellow: #ffcc00;
             --black: #000;
@@ -766,6 +771,506 @@
             }
         }
 
+        /* Стили для раздела голосования */
+        /* Анимация при голосовании */
+        .vote-btn {
+            background: linear-gradient(45deg, #ff00ff, #ff0080);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vote-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .vote-btn:hover:before {
+            left: 100%;
+        }
+
+        .vote-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 0, 102, 0.4);
+        }
+
+        /* Эффект выбора */
+        .member-card.vote-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-card.vote-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--card-color), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .member-card.vote-card:hover:before {
+            opacity: 1;
+        }
+
+        .member-card.vote-card:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Аватар участницы */
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            overflow: hidden;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .member-card.vote-card:hover .member-avatar {
+            transform: scale(1.1);
+            border-color: var(--card-color);
+        }
+
+        .member-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Индикатор лидера */
+        .member-card.vote-card.leader {
+            border: 2px solid var(--card-color);
+            box-shadow: 0 0 30px var(--card-color-shadow);
+        }
+
+        .leader-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--card-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Прогресс бар голосов */
+        .vote-progress {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+
+        .vote-progress-fill {
+            height: 100%;
+            background: var(--card-color);
+            border-radius: 4px;
+            transition: width 1s ease-out;
+            position: relative;
+        }
+
+        .vote-progress-fill:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Уведомление о голосовании */
+        .vote-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #00cc66, #00ff88);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            z-index: 1000;
+            animation: slideInRight 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+            box-shadow: 0 10px 30px rgba(0, 204, 102, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .members-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .member-card.vote-card {
+                padding: 1.5rem 1rem;
+            }
+            
+            .member-avatar {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .members-grid {
+                grid-template-columns: 1fr;
+                max-width: 280px;
+            }
+        }
+
+        /* Подсветка активной карточки */
+        .member-card.vote-card.active {
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 0 0 var(--card-color-glow);
+            }
+            70% {
+                box-shadow: 0 0 0 15px transparent;
+            }
+            100% {
+                box-shadow: 0 0 0 0 transparent;
+            }
+        }
+
+        /* Эффект наведения на количество голосов */
+        .vote-count {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .vote-count:hover {
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .vote-count i {
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .vote-count:hover i {
+            opacity: 1;
+        }
+
+        /* Градиентные обводки для каждой участницы */
+        .member-card.vote-card[data-member="jisoo"] {
+            --card-color: #ff4d6d;
+            --card-color-shadow: rgba(255, 77, 109, 0.3);
+            --card-color-glow: rgba(255, 77, 109, 0.5);
+        }
+
+        .member-card.vote-card[data-member="jennie"] {
+            --card-color: #ff0066;
+            --card-color-shadow: rgba(255, 0, 102, 0.3);
+            --card-color-glow: rgba(255, 0, 102, 0.5);
+        }
+
+        .member-card.vote-card[data-member="rose"] {
+            --card-color: #ff66b2;
+            --card-color-shadow: rgba(255, 102, 178, 0.3);
+            --card-color-glow: rgba(255, 102, 178, 0.5);
+        }
+
+        .member-card.vote-card[data-member="lisa"] {
+            --card-color: #ffcc00;
+            --card-color-shadow: rgba(255, 204, 0, 0.3);
+            --card-color-glow: rgba(255, 204, 0, 0.5);
+        }
+
+        /* Индикатор лидера */
+        .member-card.vote-card.leader {
+            border: 2px solid var(--card-color);
+            box-shadow: 0 0 30px var(--card-color-shadow);
+        }
+
+        .leader-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--card-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Прогресс бар голосов */
+        .vote-progress {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+
+        .vote-progress-fill {
+            height: 100%;
+            background: var(--card-color);
+            border-radius: 4px;
+            transition: width 1s ease-out;
+            position: relative;
+        }
+
+        .vote-progress-fill:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Уведомление о голосовании */
+        .vote-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #00cc66, #00ff88);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            z-index: 1000;
+            animation: slideInRight 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+            box-shadow: 0 10px 30px rgba(0, 204, 102, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .members-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .member-card.vote-card {
+                padding: 1.5rem 1rem;
+            }
+            
+            .member-avatar {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .members-grid {
+                grid-template-columns: 1fr;
+                max-width: 280px;
+            }
+        }
+
+        /* Подсветка активной карточки */
+        .member-card.vote-card.active {
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 0 0 var(--card-color-glow);
+            }
+            70% {
+                box-shadow: 0 0 0 15px transparent;
+            }
+            100% {
+                box-shadow: 0 0 0 0 transparent;
+            }
+        }
+
+        /* Эффект наведения на количество голосов */
+        .vote-count {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .vote-count:hover {
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .vote-count i {
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .vote-count:hover i {
+            opacity: 1;
+        }
+
+        
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .member-card.vote-card {
+            background: rgba(245, 122, 233, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .member-card.vote-card:hover {
+            border-color: rgba(255, 0, 102, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .member-color-bar {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .member-info h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .member-position {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            height: 50px;
+        }
+
+        .member-desc {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .members-grid {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
         .vote-leaderboard {
             background: rgba(0,0,0,0.9);
             padding: 4rem 0;
@@ -1014,55 +1519,90 @@
             <div class="vote-options">
                 <div class="members-grid">
                     <div class="member-card vote-card" data-member="jisoo">
-                        <div class="member-color-bar" style="background-color: #ff4d6d;"></div>
+                        <div class="member-color-bar" style="background-color: var(--jisoo);"></div>
+                        <div class="member-avatar">
+                            <img src="assets/img/jisoo/jisoo-portrait.jpg" alt="Джису">
+                        </div>
                         <div class="member-info">
                             <h3>ДЖИСУ</h3>
                             <p class="member-position">Вокал, вижуал</p>
-                            <p class="member-desc">Элегантная и харизматичная, с чистым вокалом</p>
+                            <p class="member-desc">Элегантная и харизматичная</p>
                         </div>
                         <button class="vote-btn" data-member="jisoo">
-                            <i class="fas fa-vote-yea"></i> Голосовать
+                            <i class="fas fa-heart"></i> Голосовать
                         </button>
-                        <div class="vote-count" id="votesJisoo">0 голосов</div>
+                        <div class="vote-count">
+                            <i class="fas fa-fire"></i> <span id="votesJisoo">0</span> голосов
+                        </div>
+                        <div class="vote-progress">
+                            <div class="vote-progress-fill" style="width: 0%"></div>
+                        </div>
                     </div>
-                    
+
+
                     <div class="member-card vote-card" data-member="jennie">
-                        <div class="member-color-bar" style="background-color: #ff0066;"></div>
+                        <div class="member-color-bar" style="background-color: var(--jennie);"></div>
+                        <div class="member-avatar">
+                            <img src="assets/img/jennie/jennie-portrait.jpg" alt="Дженни">
+                        </div>
                         <div class="member-info">
                             <h3>ДЖЕННИ</h3>
                             <p class="member-position">Рэп, вокал</p>
                             <p class="member-desc">Уверенная и модная, с уникальным стилем</p>
                         </div>
                         <button class="vote-btn" data-member="jennie">
-                            <i class="fas fa-vote-yea"></i> Голосовать
+                            <i class="fas fa-heart"></i> Голосовать
                         </button>
-                        <div class="vote-count" id="votesJennie">0 голосов</div>
-                    </div>
-                    
+                        <div class="vote-count">
+                            <i class="fas fa-fire"></i> <span id="votesJennie">0</span> голосов
+                        </div>
+                        <div class="vote-progress">
+                            <div class="vote-progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>                 
+
+
                     <div class="member-card vote-card" data-member="rose">
-                        <div class="member-color-bar" style="background-color: #ff66b2;"></div>
+                        <div class="member-color-bar" style="background-color: var(--rose);"></div>
+                        <div class="member-avatar">
+                            <img src="assets/img/rose/rose-portrait.jpg" alt="Розэ">
+                        </div>
                         <div class="member-info">
                             <h3>РОЗЭ</h3>
                             <p class="member-position">Главный вокал, танец</p>
                             <p class="member-desc">Страстная и артистичная, с уникальным голосом</p>
                         </div>
                         <button class="vote-btn" data-member="rose">
-                            <i class="fas fa-vote-yea"></i> Голосовать
+                            <i class="fas fa-heart"></i> Голосовать
                         </button>
-                        <div class="vote-count" id="votesRose">0 голосов</div>
+                        <div class="vote-count">
+                            <i class="fas fa-fire"></i> <span id="votesRose">0</span> голосов
+                        </div>
+                        <div class="vote-progress">
+                            <div class="vote-progress-fill" style="width: 0%"></div>
+                        </div>
                     </div>
-                    
+
+
                     <div class="member-card vote-card" data-member="lisa">
-                        <div class="member-color-bar" style="background-color: #ffcc00;"></div>
+                        <div class="member-color-bar" style="background-color: var(--lisa);"></div>
+                        <div class="member-avatar">
+                            <img src="assets/img/lisa/lisa-portrait.jpg" alt="Лиса">
+                        </div>
                         <div class="member-info">
-                            <h3>ЛИСА</h3>
+                            <h3>ДЖИСУ</h3>
                             <p class="member-position">Главный танцор, рэп, вокал</p>
                             <p class="member-desc">Энергичная и техничная, с мощной хореографией</p>
                         </div>
                         <button class="vote-btn" data-member="lisa">
-                            <i class="fas fa-vote-yea"></i> Голосовать
+                            <i class="fas fa-heart"></i> Голосовать
                         </button>
-                        <div class="vote-count" id="votesLisa">0 голосов</div>
+                        <div class="vote-count">
+                            <i class="fas fa-fire"></i> <span id="votesLisa">0</span> голосов
+                        </div>
+                        <div class="vote-progress">
+                            <div class="vote-progress-fill" style="width: 0%"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2277,8 +2817,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    <!-- !!! Резервная Кнопка сброса голосов -->
-    <!--<button onclick="forceResetVotes()" 
+    <!--!!! Резервная Кнопка сброса голосов -->
+    <button onclick="forceResetVotes()" 
             style="position: fixed; bottom: 20px; right: 20px; background: red; color: white; padding: 10px; border-radius: 5px; z-index: 9999;">
         СБРОС ГОЛОСОВ
     </button>
@@ -2301,6 +2841,6 @@ document.addEventListener('DOMContentLoaded', function() {
             location.reload();
         }
     }
-    </script>-->
+    </script>
 </body>
 </html>
